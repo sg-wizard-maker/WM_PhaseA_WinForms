@@ -88,7 +88,7 @@ public class Saga
     }
     #endregion
 
-    #region Static Data for testing
+    #region Class-scoped Static Data (for testing, etc)
     public static Saga ExampleSaga       = new Saga("The Saga of Examples");
     public static Saga AnotherSaga       = new Saga("Another Saga");
     public static Saga OlderInactiveSaga = new Saga("Older Saga, now inactive");
