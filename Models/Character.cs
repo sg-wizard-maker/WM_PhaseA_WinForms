@@ -43,6 +43,7 @@ public class Character
         );
         return str;
     }
+
     #endregion
 }
 

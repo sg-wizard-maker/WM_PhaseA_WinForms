@@ -93,4 +93,5 @@ public class Saga
     public static Saga AnotherSaga       = new Saga("Another Saga");
     public static Saga OlderInactiveSaga = new Saga("Older Saga, now inactive");
     #endregion
+
 }
