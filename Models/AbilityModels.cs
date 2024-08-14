@@ -519,19 +519,21 @@ public static class AbilityXpCosts
                 result = score;
                 break;
             }
-            // Otherwise, if (mm < currentXp) keep on looking...
+            // Otherwise, if (nn < currentXp) keep on looking...
         }
         return result;
     }
 
     //public static int RemainingXpUntilAbilityScoreIncrease(int currentXp, int baseXpCost)
     //{
+    //    // TODO: Test this properly...
     //    ValidateXpValue( currentXp );
     //    ValidateBaseXpCostValue(baseXpCost);
     //
-    //    int score = ScoreForXP(currentXp, baseXpCost);
-    //    int required = XPRequiredForScore(score, baseXpCost);
-    //    int nn = currentXp = required;
+    //    int score        = ScoreForXP(currentXp, baseXpCost);
+    //    int required     = XPRequiredForScore(score,     baseXpCost);
+    //    int requiredNext = XPRequiredForScore(score + 1, baseXpCost);
+    //    int nn           = (requiredNext - currentXp);
     //
     //    return nn;
     //}
