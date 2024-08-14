@@ -118,6 +118,18 @@ public class AbilityType
     }
 }
 
+/// <summary>
+/// These are objects which describe a particular Ability in the abstract,
+/// as opposed to what degree of skill a particular character has attained.
+/// Therefore, a character may have an AbilityInstance which 
+/// - refers to the AbilityArchetype for "Athletics", and
+/// - specifies (how many XP they have, what Specialization).
+/// 
+/// Thus for example, the Ability "Athletics" is defined as 
+/// being of Category "Physical", AbilityType "General", named "Athletics", 
+/// usable unskilled, not "accelerated", needing 5 XP to reach a Score of 1, 
+/// and with certain common Specializations.
+/// </summary>
 public class AbilityArchetype
 {
     public string       Category              { get; private set; }
@@ -343,6 +355,20 @@ public class AbilityArchetype
     }
 }
 
+/// <summary>
+/// These are objects which refer to a particular AbilityArchetype,
+/// and which describe the details of an Ability possessed by a character.
+/// Therefore, a character may have an AbilityInstance which 
+/// - refers to the AbilityArchetype for "Athletics", and
+/// - specifies (how many XP they have, what Specialization).
+/// 
+/// Thus for example, such an AbilityInstance may describe that
+/// in (the Ability described by the AbilityArchetype) the character
+/// - has nnn XP
+/// - has "Affinity"  in that Ability, needing less XP to increase Score
+/// - has "Puissance" in that Ability, adding some value (default +2) to the Score
+/// - has a particular Specialization in that Ability
+/// </summary>
 public class AbilityInstance
 {
     // To make a public property NOT present in the DataGridView, apply an attribute such as:
@@ -376,13 +402,13 @@ public class AbilityInstance
     { 
         get 
         { 
-            // TODO: Why is checking/unchecking "Aff" in the DataGrid not affecting the Score ?
+            // TODO: Why is checking/unchecking "Aff" in the AbilityGrid (DataGridView) not affecting the Score ?
             var result = AbilityXpCosts.ScoreForXP( this.XP, (this.HasAffinity ? AbilityXpCosts.BaseXpCostWithAffinity(this.BaseXPCost) : this.BaseXPCost) );
             return result;
         }
     }
 
-    // TODO: Why is checking/unchecking "Pui" in the DataGrid not affecting the displayed (AddToScore) value?
+    // TODO: Why is checking/unchecking "Pui" in the AbilityGrid (DataGridView) not affecting the displayed (AddToScore) value?
     [DisplayName(" ")]
     public string AddToScore { get { return this.HasPuissance ? ("+" + this.PuissantBonus.ToString()) : null; } }
 
@@ -393,11 +419,11 @@ public class AbilityInstance
     [Browsable(false)]
     public bool HasThisAbility { get; set; } = false;  // TODO: If false, display a blank value for XP / Score, rather than 0 / 0
 
-    // TODO: Why is checking/unchecking "Aff" in the DataGrid not affecting the Score ?
+    // TODO: Why is checking/unchecking "Aff" in the AbilityGrid (DataGridView) not affecting the Score ?
     [DisplayName("Aff")]
     public bool HasAffinity    { get; set; } = false;
 
-    // TODO: Why is checking/unchecking "Pui" in the DataGrid not affecting the displayed (AddToScore) value?
+    // TODO: Why is checking/unchecking "Pui" in the AbilityGrid (DataGridView) not affecting the displayed (AddToScore) value?
     [DisplayName("Pui")]
     public bool HasPuissance   { get; set; } = false;
 
@@ -412,7 +438,7 @@ public class AbilityInstance
     {
         decimal xpCost = hasAffinity ? AbilityXpCosts.BaseXpCostWithAffinity(ability.BaseXpCost) : ability.BaseXpCost;
 
-        this.Archetype       = ability;
+        this.Archetype     = ability;
         this.XP            = xp;
         this.Specialty     = specialty ?? "";
         this.HasAffinity   = hasAffinity;
@@ -428,8 +454,6 @@ public class AbilityInstance
             HasPuissance ? "Puissant" : "");
         return str;
     }
-
-
 }
 
 
