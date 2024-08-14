@@ -467,7 +467,7 @@ public static class AbilityXpCosts
 {
     // TODO: 
     // Replace the brute-force-and-stupidity "loop until the Score is reached" logic 
-    // with some a proper means of calculating the arithmetic sequence 
+    // with some proper means of calculating the arithmetic sequence 
     // (or table-lookup up to some N, if that proves to be an optimization).
 
     #region List methods
@@ -572,42 +572,24 @@ public static class AbilityXpCosts
     }
 
     #region Argument Validation methods
-    public static void ValidateAbilityScoreValue( int score )
+    public static void ValidateAbilityScoreValue(int score)
     {
-        if (score < 0)
-        {
-            throw new ArgumentException("score < 0");
-        }
-        if ( score > 99 )
-        {
-            throw new ArgumentException("score > 99");
-        }
+        if (score <  0) { throw new ArgumentException("score < 0");  }
+        if (score > 99) { throw new ArgumentException("score > 99"); }
         // Otherwise, OK
     }
 
-    public static void ValidateXpValue( int xp )
+    public static void ValidateXpValue(int xp)
     {
-        if (xp < 0)
-        {
-            throw new ArgumentException("xp < 0");
-        }
-        if ( xp > 9999)
-        {
-            throw new ArgumentException("xp > 9999");
-        }
+        if (xp <    0) { throw new ArgumentException("xp < 0");    }
+        if (xp > 9999) { throw new ArgumentException("xp > 9999"); }
         // Otherwise, OK
     }
 
     public static void ValidateBaseXpCostValue(decimal baseXpCost)
     {
-        if (baseXpCost <= 0.0m)
-        {
-            throw new ArgumentException("baseXpCost <= 0.0");
-        }
-        if ( baseXpCost > 60.0m)
-        {
-            throw new ArgumentException("baseXpCost > 60.0");
-        }
+        if (baseXpCost <=  0.0m) { throw new ArgumentException("baseXpCost <= 0.0"); }
+        if (baseXpCost  > 60.0m) { throw new ArgumentException("baseXpCost > 60.0"); }
         // Otherwise, OK
     }
     #endregion
