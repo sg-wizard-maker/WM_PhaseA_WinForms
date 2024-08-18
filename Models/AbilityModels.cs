@@ -120,15 +120,20 @@ public class AbilityType
 
 /// <summary>
 /// These are objects which describe a particular Ability in the abstract,
-/// as opposed to what degree of skill a particular character has attained.
-/// Therefore, a character may have an AbilityInstance which 
-/// - refers to the AbilityArchetype for "Athletics", and
-/// - specifies (how many XP they have, what Specialization).
-/// 
-/// Thus for example, the Ability "Athletics" is defined as 
-/// being of Category "Physical", AbilityType "General", named "Athletics", 
-/// usable unskilled, not "accelerated", needing 5 XP to reach a Score of 1, 
-/// and with certain common Specializations.
+/// as opposed to what degree of skill a particular character has attained.<br/>
+/// <br/>
+/// Therefore, a character may have an AbilityInstance which <br/>
+/// - refers to the AbilityArchetype for "Athletics", <br/>
+/// - specifies (how many XP they have, what Specialization).<br/>
+/// <br/>
+/// Thus for example, the Ability "Athletics" is defined as <br/>
+/// - being named "Athletics", <br/>
+/// - of Category "Physical", <br/>
+/// - of AbilityType "General", <br/>
+/// - usable unskilled, <br/>
+/// - not "accelerated", <br/>
+/// - needing 5 XP to reach a Score of 1, <br/>
+/// - and with certain common Specializations.
 /// </summary>
 public class AbilityArchetype
 {
@@ -357,17 +362,18 @@ public class AbilityArchetype
 
 /// <summary>
 /// These are objects which refer to a particular AbilityArchetype,
-/// and which describe the details of an Ability possessed by a character.
-/// Therefore, a character may have an AbilityInstance which 
-/// - refers to the AbilityArchetype for "Athletics", and
-/// - specifies (how many XP they have, what Specialization).
-/// 
+/// and which describe the details of an Ability possessed by a character.<br/>
+/// <br/>
+/// Therefore, a character may have an AbilityInstance which <br/>
+/// - refers to the AbilityArchetype for "Athletics", and<br/>
+/// - specifies (how many XP they have, what Specialization).<br/>
+/// <br/>
 /// Thus for example, such an AbilityInstance may describe that
-/// in (the Ability described by the AbilityArchetype) the character
-/// - has nnn XP
-/// - has "Affinity"  in that Ability, needing less XP to increase Score
-/// - has "Puissance" in that Ability, adding some value (default +2) to the Score
-/// - has a particular Specialization in that Ability
+/// in (the Ability described by the AbilityArchetype) the character<br/>
+/// - has nnn XP<br/>
+/// - has "Affinity"  in that Ability, needing less XP to increase Score<br/>
+/// - has "Puissance" in that Ability, adding some value (default +2) to the Score<br/>
+/// - has a particular Specialization in that Ability<br/>
 /// </summary>
 public class AbilityInstance
 {
