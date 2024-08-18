@@ -71,16 +71,17 @@ public static class AbilityCategory
 }
 
 /// <summary>
-/// These are types of Abilities as defined in the ArM5 rules.
+/// These are types of Abilities as defined in the ArM5 rules.<br/>
 /// Characters have access to learn Abilities based upon their type,
-/// and whether the character has an associated Virtue or Flaw granting access.
-/// The types are:
-/// - [Gc]   General (child) - The initial 120 XP for "Early Life" can be spent on these
-/// - [G]    General         - Any character can spend XP on these
-/// - [M]    Martial         - Requires a Virtue/Flaw to spend XP on these during chargen
-/// - [Acad] Academic        - Requires literacy, granted by certain Virtues
-/// - [Arc]  Arcane          - Requires certain Virtues/Flaws
-/// - [Sup]  Supernatural    - Each individual Ability in this grouping requires a specific Virtue (or Gifted tradition)
+/// and whether the character has an associated Virtue or Flaw granting access.<br/>
+/// <br/>
+/// The types are:<br/>
+/// - [Gc]   General (child) - The initial 120 XP for "Early Life" can be spent on these<br/>
+/// - [G]    General         - Any character can spend XP on these<br/>
+/// - [M]    Martial         - Requires a Virtue/Flaw to spend XP on these during chargen<br/>
+/// - [Acad] Academic        - Requires literacy, granted by certain Virtues<br/>
+/// - [Arc]  Arcane          - Requires certain Virtues/Flaws<br/>
+/// - [Sup]  Supernatural    - Each individual Ability in this grouping requires a specific Virtue (or Gifted tradition)<br/>
 /// </summary>
 public class AbilityType
 {
