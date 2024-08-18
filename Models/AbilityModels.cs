@@ -470,9 +470,16 @@ public class AbilityInstance
 
 
 
-
+/// <summary>
+/// A utility class encoding rules which determine the XP needed to achieve a certain Score, 
+/// given a Base Cost and perhaps modified by Affinity.
+/// </summary>
 public static class AbilityXpCosts
 {
+    // TODO:
+    // Need to support such as Linguist (sets Base XP Cost to 4.0m),
+    // and Flawless Formulaic Magic (which acts to double XP gain on Spell Mastery abilities)
+
     // TODO: 
     // Replace the brute-force-and-stupidity "loop until the Score is reached" logic 
     // with some proper means of calculating the arithmetic sequence 
