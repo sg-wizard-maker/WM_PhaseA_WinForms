@@ -48,19 +48,6 @@ public class FormForArM5Character : Form
         this.PerformLayout();
         #endregion
 
-        //#region Setup various things in the AbilityGridControls
-        //// Note: Call exactly ONE of the .DoDataSetupForAbilityXXX() methods, calling additional will add duplicate Abilities data.
-        //this.PanelForAbilityGroupings.DoDataSetupForAbilityCategories();
-        ////this.PanelForAbilityGroupings.DoDataSetupForAbilityTypes();
-        ////this.PanelForAbilityGroupings.DoDataSetupForOneGiantList();
-        ////// TODO: Maybe add another kind, "ByAbilityTypeButWithGeneralSplitUp" ...
-        //
-        //var dataGridsInThisPanel = ControlExtensions.DataGridsInAbilitiesFlowLayoutPanel(this.PanelForAbilityGroupings);
-        //
-        //this.PanelForAbilityGroupings.DoColumnsSetup(dataGridsInThisPanel);
-        //this.PanelForAbilityGroupings.AdjustEachContainedGridToIndividualNeededHeight(dataGridsInThisPanel);
-        //#endregion
-
         var foo = Saga.CurrentSaga;
     }
     #endregion

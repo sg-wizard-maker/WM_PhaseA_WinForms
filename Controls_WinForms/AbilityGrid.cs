@@ -60,7 +60,7 @@ public class AbilityGrid : DataGridView
     public int ResizeGridToNeededHeight()
     {
         var query = this.Rows.Cast<DataGridViewRow>();
-        int sumOfRowHeights = query.Sum(rr => rr.Height);
+        int sumOfRowHeights  = query.Sum(rr => rr.Height);
         int calculatedHeight = this.ColumnHeadersHeight + sumOfRowHeights;
         int result = calculatedHeight + 2;  // Fudge factor (2 px) to prevent vertical scrollbar
         this.Height = result;
