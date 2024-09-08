@@ -28,7 +28,7 @@ public class AbilityWildcardGroup : IOrdinaryArchetypeOrWildcardGroup
         } 
     }
 
-    public string FullDisplayName { 
+    public string DisplayFullName { 
         get 
         {
             string str = string.Format("{0}: XXX", this.FullName);
