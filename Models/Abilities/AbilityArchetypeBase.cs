@@ -3,10 +3,11 @@ using System.Collections.Generic;
 
 namespace WizardMakerPrototype.Models;
 
+/// <summary>
+/// Abstract base class for (AbilityArchetype, AbilityArchetypeWildcard).
+/// </summary>
 public abstract class AbilityArchetypeBase
 {
-    public string Name        { get; set; }
-
     #region Properties possibly useful for LINQ queries
     // Note: These are implemented by each class, to fulfill requirements of certain Interfaces
     //public bool IsSingle   { get; }
@@ -14,6 +15,8 @@ public abstract class AbilityArchetypeBase
     //public bool IsWildcard { get; }
     #endregion
 
+    public string       Name                  { get; protected set; }
+    //public string     Description           { get; protected set; }  // Likely, but future
     public string       Category              { get; protected set; }
     public AbilityType  Type                  { get; protected set; }
     public List<string> CommonSpecializations { get; protected set; } = new List<string>();
