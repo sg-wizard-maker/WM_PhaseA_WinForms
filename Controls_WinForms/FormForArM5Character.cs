@@ -49,8 +49,8 @@ public class FormForArM5Character : Form
         #endregion
 
         var foo = Saga.CurrentSaga;  // for breakpoint
-
         var bar = AbilityWildcardGroup.AllAbilityWildcardGroups;  // for breakpoint
+        var baz = AbilityArchetypeWildcard.AllAbilityArchetypeWildcards;  // for breakpoint
     }
     #endregion
 
