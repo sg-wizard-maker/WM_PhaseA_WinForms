@@ -48,7 +48,9 @@ public class FormForArM5Character : Form
         this.PerformLayout();
         #endregion
 
-        var foo = Saga.CurrentSaga;
+        var foo = Saga.CurrentSaga;  // for breakpoint
+
+        var bar = AbilityWildcardGroup.AllAbilityWildcardGroups;  // for breakpoint
     }
     #endregion
 
