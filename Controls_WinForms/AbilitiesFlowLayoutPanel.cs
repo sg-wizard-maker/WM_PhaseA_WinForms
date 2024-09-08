@@ -343,8 +343,15 @@ public class AbilitiesFlowLayoutPanel : FlowLayoutPanel
         };
         int numSpecialties = randomSpecialties.Count() - 1;
 
-        // TODO: Need to add from AbilityArchetypeWildcard.AllAbilityArchetypeWildcards as well as AbilityArchetype.AllCommonAbilities ...
-        foreach (var arch in AbilityArchetype.AllCommonAbilities)
+        // TODO:
+        // Need to add from AbilityArchetypeWildcard.AllAbilityArchetypeWildcards as well as AbilityArchetype.AllCommonAbilities ...
+        // ...Seems to be working thus far, need more testing and some review to deal with a couple of awkward bits around .Name
+
+        List<AbilityArchetypeBase> combinedList = new List<AbilityArchetypeBase>();
+        combinedList.AddRange(AbilityArchetype.AllCommonAbilities);
+        combinedList.AddRange(AbilityArchetypeWildcard.AllAbilityArchetypeWildcards);
+        //foreach (var arch in AbilityArchetype.AllCommonAbilities)
+        foreach (var arch in combinedList)
         {
             int randomXP = Utility.RandomInteger(rand, 0, 150);
             string randomsSpecialty = randomSpecialties[Utility.RandomInteger(rand, 0, numSpecialties)];

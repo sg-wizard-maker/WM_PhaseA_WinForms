@@ -30,8 +30,14 @@ public class AbilityInstance
     //     dataGridView1.Columns[0].Visible = false;
 
     #region Public Properties
+
+    // TODO:
+    // AbilityInstance needs to be able to use (AbilityArchetype, AbilityArchetypeWildcard)
+    // This presumably means that AbilityInstance.Archetype needs to be of type AbilityArchetypeBase ...
+
     [Browsable(false)]
-    public AbilityArchetype Archetype { get; private set; }
+    //public AbilityArchetype Archetype { get; private set; }
+    public AbilityArchetypeBase Archetype { get; private set; }
 
     [Browsable(false)]
     public decimal     BaseXPCost { get { return Archetype.BaseXpCost; } }
@@ -45,7 +51,29 @@ public class AbilityInstance
     [DisplayName("Type")]
     public string TypeAbbrev { get { return this.Archetype.Type.Abbreviation; } }
 
-    public string Name       { get { return this.Archetype.Name + (this.Archetype.CannotUseUnskilled ? "*" : ""); } }
+    public string Name       
+    { 
+        // Hmmm, this is a bit awkward.  Can likely improve on it, by massaging the two classes involved...
+        get 
+        {
+            var arch = (this.Archetype as AbilityArchetype);
+            var wc   = (this.Archetype as AbilityArchetypeWildcard);
+
+            if (arch is not null)
+            {
+                string str = arch.Name + (arch.CannotUseUnskilled ? "*" : "");
+                return str;
+            }
+            if (wc is not null)
+            {
+                string str = wc.Name + (wc.CannotUseUnskilled ? "*" : "");
+                return str;
+            }
+            throw new System.Exception("Impossible: AbilityInstance got strange archetype, neither AbilityArchetype nor AbilityArchetypeWildcard");
+
+            //return this.Archetype.Name + (this.Archetype.CannotUseUnskilled ? "*" : ""); 
+        } 
+    }
     public int    XP         { get; set; }
 
     public int    Score      
@@ -85,7 +113,9 @@ public class AbilityInstance
     #endregion
 
     #region Constructors
-    public AbilityInstance ( AbilityArchetype ability, int xp = 0, string specialty = "", 
+    //public AbilityInstance ( AbilityArchetype ability, int xp = 0, string specialty = "", 
+    //    bool hasAffinity = false, bool hasPuissance = false, int puissantBonus = 2)
+    public AbilityInstance ( AbilityArchetypeBase ability, int xp = 0, string specialty = "", 
         bool hasAffinity = false, bool hasPuissance = false, int puissantBonus = 2)
     {
         decimal xpCost = hasAffinity ? AbilityXpCosts.BaseXpCostWithAffinity(ability.BaseXpCost) : ability.BaseXpCost;

@@ -15,8 +15,8 @@ public class AbilityArchetypeWildcard : AbilityArchetypeBase
     #endregion
 
     #region Public Properties
-    public AbilityWildcardGroup IsWithinGroup { get; protected set; }
-    public string SpecificAbility { get; protected set; }
+    public AbilityWildcardGroup IsWithinGroup   { get; protected set; }
+    public string               SpecificAbility { get; protected set; }
 
     public new string Name {
         get
@@ -25,6 +25,7 @@ public class AbilityArchetypeWildcard : AbilityArchetypeBase
             string str = string.Format("{0}: {1}", parentName, this.SpecificAbility);
             return str;
         }
+        // Differs from parent class, by virtue of having no setter here.  This causes some awkwardness elsewhere...
     }
 
     public string FullName
