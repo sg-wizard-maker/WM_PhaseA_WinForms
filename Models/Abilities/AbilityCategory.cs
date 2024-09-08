@@ -23,22 +23,7 @@ public class AbilityCategory
     // an AbilityWildcardGroup (excepting Law: <specify>, and Theology: <specify>),
     // however they serve different purposes.
 
-    // TODO: Once serialization is integrated, this sort of static data will be loaded from JSON...
-    public static List<String> Categories = new List<string>();
-
-    public static string Martial      = "Martial";
-    public static string Physical     = "Physical";
-    public static string Social       = "Social";
-    public static string Languages    = "Language";
-    public static string Crafts       = "Crafts";
-    public static string Professions  = "Professions";
-    public static string Academic     = "Academic";
-    public static string Supernatural = "Supernatural";
-    public static string Arcane       = "Arcane";
-    public static string RealmLores   = "Realm Lores";
-    public static string AreaLores    = "Area Lores";
-    public static string OrgLores     = "Org Lores";
-
+    #region Constructors
     static AbilityCategory ()
     {
         Categories.Add( Martial      );
@@ -54,5 +39,24 @@ public class AbilityCategory
         Categories.Add( AreaLores    );
         Categories.Add( OrgLores     );
     }
+    #endregion
+
+    #region Static data
+    // TODO: Once serialization is integrated, this sort of static data will be loaded from JSON...
+    public static List<String> Categories = new List<string>();
+
+    public static string Martial      = "Martial";
+    public static string Physical     = "Physical";
+    public static string Social       = "Social";
+    public static string Languages    = "Language";
+    public static string Crafts       = "Crafts";
+    public static string Professions  = "Professions";
+    public static string Academic     = "Academic";
+    public static string Supernatural = "Supernatural";
+    public static string Arcane       = "Arcane";
+    public static string RealmLores   = "Realm Lores";
+    public static string AreaLores    = "Area Lores";
+    public static string OrgLores     = "Org Lores";
+    #endregion
 
 }

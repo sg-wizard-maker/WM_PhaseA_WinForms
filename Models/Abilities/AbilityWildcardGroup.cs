@@ -18,4 +18,20 @@ public class AbilityWildcardGroup : IOrdinaryArchetypeOrWildcardGroup
     public string      Category    { get; protected set; }  // A few "wildcard groups" don't specify their own AbilityCategory, such as (Law: X, Theology: X)  which dwell within AbilityCategory.Academic
     public AbilityType Type        { get; protected set; }  // Individual AbilityArchetypeWildcard could differ, such as (Living Language: A, Dead Language: B) both being within AbilityCategory.Languages
 
+    #region Constructors
+    public AbilityWildcardGroup()
+    {
+
+    }
+
+    // TODO: ...similar to that for AbilityArchetype
+
+    // Possibly also a method to create a new AbilityArchetypeWildcard (calling the ctor) associated with 'this'
+    #endregion
+
+    #region Setup Static Data
+    // TODO: ...create one for each "wildcard group", including (Law: X) and (Theology: X)
+    // These will be __used__ within certain ComboBox or other lists
+    #endregion
+
 }

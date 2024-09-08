@@ -32,19 +32,12 @@ public class AbilityType
     //   - REMOVE access to certain AbilityTypes or specific Abilities
     // and other considerations.)
 
+    #region Constructors
     private AbilityType(string abbrev, string name)
     {
         this.Abbreviation = abbrev;
         this.Name = name;
     }
-
-    public static AbilityType GenChild     = new AbilityType("GC",   "General+Child" );
-    public static AbilityType General      = new AbilityType("Gen",  "General"       );
-    public static AbilityType Martial      = new AbilityType("Mar",  "Martial"       );
-    public static AbilityType Academic     = new AbilityType("Acad", "Academic"      );
-    public static AbilityType Arcane       = new AbilityType("Arc",  "Arcane"        );
-    public static AbilityType Supernatural = new AbilityType("Sup",  "Supernatural"  );
-    public static AbilityType Secret       = new AbilityType("Sec",  "Secret"        );  // Not specified in (ArM5 core), but useful for Saga-specific Abilities which are private to certain groups, and the like
 
     static AbilityType()
     {
@@ -56,5 +49,16 @@ public class AbilityType
         Types.Add( Supernatural );
         Types.Add( Secret       );  // Not specified in (ArM5 core), but useful
     }
+    #endregion
+
+    #region Static data
+    public static AbilityType GenChild     = new AbilityType("GC",   "General+Child" );
+    public static AbilityType General      = new AbilityType("Gen",  "General"       );
+    public static AbilityType Martial      = new AbilityType("Mar",  "Martial"       );
+    public static AbilityType Academic     = new AbilityType("Acad", "Academic"      );
+    public static AbilityType Arcane       = new AbilityType("Arc",  "Arcane"        );
+    public static AbilityType Supernatural = new AbilityType("Sup",  "Supernatural"  );
+    public static AbilityType Secret       = new AbilityType("Sec",  "Secret"        );  // Not specified in (ArM5 core), but useful for Saga-specific Abilities which are private to certain groups, and the like
+    #endregion
 
 }

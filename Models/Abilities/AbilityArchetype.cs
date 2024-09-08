@@ -33,6 +33,7 @@ public class AbilityArchetype : AbilityArchetypeBase, IOrdinaryArchetypeOrWildca
     public bool IsWildcard { get { return false; } }
     #endregion
 
+    #region Constructors
     public AbilityArchetype ( string category, AbilityType type, string name, List<string> specializations, 
         bool cannotUseUnskilled = false, bool isAccelerated = false )
     {
@@ -45,10 +46,27 @@ public class AbilityArchetype : AbilityArchetypeBase, IOrdinaryArchetypeOrWildca
         this.IsAccelerated         = isAccelerated;
     }
 
-    public static List<AbilityArchetype> AllCommonAbilities = new List<AbilityArchetype>();
-
-    private const bool  NO_UNSKILLED = true;
-    private const bool YES_UNSKILLED = false;
+    static AbilityArchetype ()
+    {
+        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { Brawl, SingleWeapon, GreatWeapon, Bows, Thrown } );
+        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { AnimalHandling, Athletics, Awareness, Hunt, Legerdemain, Ride, Stealth, Survival, Swim } );
+        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { Bargain, Carouse, Charm, Etiquette, FolkKen, Guile, Intrigue, Music, Leadership, Teaching } );
+        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { LangEnglish, LangHighGerman, LangItalian, LangKoineGreek, LangArabic } );
+        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { LangLatin, LangAncientGreek, LangHebrew, LangGothic } );
+        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { CraftTanner, CraftLeatherworker, CraftCarpenter, CraftWoodcarver, CraftBlacksmith, CraftJeweler, CraftWhitesmith } );
+        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { ProfScribe, ProfApothecary, ProfJongleur, ProfReeve, ProfSailor, ProfSteward, ProfTeamster, ProfWasherwoman } );
+        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { ArtesLiberales, ArtOfMemory, Chirurgy, Medicine, Philosophiae } );
+        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { LawCodeOfHermes, LawCivilAndCanon, LawIslamic } );
+        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { TheologyChristian, TheologyJudaic, TheologyIslamic, TheologyPagan } );
+        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { AnimalKen, Dowsing, EnchantingMusic, Entrancement, MagicSensitivity, Premonitions, SecondSight, SenseHolyUnholy, Shapeshifter, WildernessSense } );
+        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { TheEnigma, HeartBeast, FaerieMagic } );
+        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { HermeticMagicTheory, FolkWitchMagicTheory, ParmaMagica, Certamen, Concentration, Finesse, Penetration, Recuperation, Withstanding } );
+        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { MagicLore, FaerieLore, DominionLore, InfernalLore } );
+        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { AreaLoreVeryBasic, AreaLoreSomeCountry, AreaLoreSomeTribunal, AreaLoreSomeCovenant } );
+        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { OrgLoreChurch, OrgLoreOrderOfHermes, OrgLoreVeryBasic, OrgLoreSomeKnightOrder, OrgLoreSomeNobleCourt, OrgLoreSomeCraftGuild } );
+        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { MartialSecret, PhysicalSecret, SocialSecret, LangSecret, CraftSecret, ProfSecret, AcadSecret, OrgLoreSecret, AreaLoreSecret } );
+    }
+    #endregion
 
     #region Static data for Common Specializations
     private static List<string> emptyListOfSpecialties = new List<string>();
@@ -83,6 +101,11 @@ public class AbilityArchetype : AbilityArchetypeBase, IOrdinaryArchetypeOrWildca
     // and saved to JSON files
     //     (at least for additional / user-defined)
     // upon (when XXX is saved, possibly also at shutdown)
+
+    public static List<AbilityArchetype> AllCommonAbilities = new List<AbilityArchetype>();
+
+    private const bool  NO_UNSKILLED = true;
+    private const bool YES_UNSKILLED = false;
 
     // Category: Martial
     public static AbilityArchetype Brawl        = new AbilityArchetype(AbilityCategory.Martial, AbilityType.GenChild, "Brawl",         brawlSpecializations );
@@ -231,26 +254,5 @@ public class AbilityArchetype : AbilityArchetypeBase, IOrdinaryArchetypeOrWildca
     public static AbilityArchetype OrgLoreSomeCraftGuild  = new AbilityArchetype(AbilityCategory.OrgLores, AbilityType.General, "Org Lore: SomeCraftGuild",  emptyListOfSpecialties, NO_UNSKILLED );
     // ...
     #endregion
-
-    static AbilityArchetype ()
-    {
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { Brawl, SingleWeapon, GreatWeapon, Bows, Thrown } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { AnimalHandling, Athletics, Awareness, Hunt, Legerdemain, Ride, Stealth, Survival, Swim } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { Bargain, Carouse, Charm, Etiquette, FolkKen, Guile, Intrigue, Music, Leadership, Teaching } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { LangEnglish, LangHighGerman, LangItalian, LangKoineGreek, LangArabic } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { LangLatin, LangAncientGreek, LangHebrew, LangGothic } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { CraftTanner, CraftLeatherworker, CraftCarpenter, CraftWoodcarver, CraftBlacksmith, CraftJeweler, CraftWhitesmith } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { ProfScribe, ProfApothecary, ProfJongleur, ProfReeve, ProfSailor, ProfSteward, ProfTeamster, ProfWasherwoman } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { ArtesLiberales, ArtOfMemory, Chirurgy, Medicine, Philosophiae } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { LawCodeOfHermes, LawCivilAndCanon, LawIslamic } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { TheologyChristian, TheologyJudaic, TheologyIslamic, TheologyPagan } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { AnimalKen, Dowsing, EnchantingMusic, Entrancement, MagicSensitivity, Premonitions, SecondSight, SenseHolyUnholy, Shapeshifter, WildernessSense } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { TheEnigma, HeartBeast, FaerieMagic } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { HermeticMagicTheory, FolkWitchMagicTheory, ParmaMagica, Certamen, Concentration, Finesse, Penetration, Recuperation, Withstanding } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { MagicLore, FaerieLore, DominionLore, InfernalLore } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { AreaLoreVeryBasic, AreaLoreSomeCountry, AreaLoreSomeTribunal, AreaLoreSomeCovenant } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { OrgLoreChurch, OrgLoreOrderOfHermes, OrgLoreVeryBasic, OrgLoreSomeKnightOrder, OrgLoreSomeNobleCourt, OrgLoreSomeCraftGuild } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { MartialSecret, PhysicalSecret, SocialSecret, LangSecret, CraftSecret, ProfSecret, AcadSecret, OrgLoreSecret, AreaLoreSecret } );
-    }
 
 }

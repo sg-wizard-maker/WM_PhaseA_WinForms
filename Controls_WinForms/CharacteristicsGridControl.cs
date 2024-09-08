@@ -9,6 +9,11 @@ using System.Windows.Forms;
 
 namespace WizardMakerPrototype.Controls
 {
+    // TODO: Likely will replace this with a treatment more similar to AbilityGrid / AbilityLabelAndGridPanel
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class CharacteristicsGridControl : DataGridView
     {
         const int GRID_CHARACTERISTICS_WIDTH_EXTRA_BOLD = 8;
@@ -20,6 +25,7 @@ namespace WizardMakerPrototype.Controls
         const int GRID_CHARACTERISTICS_HEIGHT_WITH_HEADERS = (GRID_CHARACTERISTICS_HEIGHT_NO_HEADERS + 22);
         const int GRID_CHARACTERISTICS_HEIGHT = GRID_CHARACTERISTICS_HEIGHT_WITH_HEADERS;
 
+        #region Constructors
         public CharacteristicsGridControl ( int locationX, int locationY, bool hasIntelligence = true, bool showColumnHeaders = true )
         {
             string abilityNameIntOrCunning   = hasIntelligence ? "Intelligence" : "Cunning";
@@ -82,9 +88,8 @@ namespace WizardMakerPrototype.Controls
             this.Rows.Add( charRow2 );
             this.Rows.Add( charRow3 );
             this.Rows.Add( charRow4 );
-
         }
-
+        #endregion
 
     }
 }

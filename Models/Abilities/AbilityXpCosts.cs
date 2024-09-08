@@ -3,7 +3,9 @@
 namespace WizardMakerPrototype.Models;
 
 /// <summary>
-/// A utility class encoding rules which determine the XP needed to achieve a certain Score, 
+/// A utility class encoding ArM5 RPG rules <br/>
+/// (purposefully varying from the "Pen and Paper" Rules as Written, in aid of producing an "auditable" result)<br/>
+/// which determine the XP needed to achieve a certain Score, 
 /// given a Base Cost and perhaps modified by Affinity.
 /// </summary>
 public static class AbilityXpCosts
@@ -14,15 +16,6 @@ public static class AbilityXpCosts
     //   Virtue:Flawless Formulaic Magic (which acts to double XP gain on Spell Mastery abilities,
     //                                    and grants an initial 5 XP (unmodified) in each Spell Mastery)
     // The latter might be represented as having Base XP cost 2.5m, and granting an initial 2.5m ?
-
-    // TODO: 
-    // Replace the brute-force-and-stupidity "loop until the Score is reached" logic 
-    // with some proper means of calculating the arithmetic sequence 
-    // (or table-lookup up to some N, if that proves to be an optimization).
-    // 
-    // https://www.cuemath.com/arithmetic-sequence-formula/
-    // https://www.mometrix.com/academy/writing-formulas-for-arithmetic-sequences/
-
 
     #region List methods
     //public static List<int> ListXpRequiredForScore(int maxScore, int baseXpCost)
@@ -93,6 +86,7 @@ public static class AbilityXpCosts
     //}
     #endregion
 
+    #region Base mathematical methods
     public static decimal BaseXpCostWithAffinity(decimal baseXpCost)
     {
         ValidateBaseXpCostValue(baseXpCost);
@@ -103,6 +97,14 @@ public static class AbilityXpCosts
 
     public static decimal ArithmeticSequence( int score )
     {
+        // TODO: 
+        // Replace the brute-force-and-stupidity "loop until the Score is reached" logic 
+        // with some proper means of calculating the arithmetic sequence 
+        // (or table-lookup up to some N, if that proves to be an optimization).
+        // 
+        // https://www.cuemath.com/arithmetic-sequence-formula/
+        // https://www.mometrix.com/academy/writing-formulas-for-arithmetic-sequences/
+
         ValidateAbilityScoreValue( score );
 
         decimal value = 0.0m;
@@ -126,6 +128,7 @@ public static class AbilityXpCosts
         int result = (int)roundedUp;
         return result;
     }
+    #endregion
 
     #region Argument Validation methods
     public static void ValidateAbilityScoreValue(int score)

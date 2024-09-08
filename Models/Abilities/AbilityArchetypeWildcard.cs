@@ -15,4 +15,7 @@ public class AbilityArchetypeWildcard : AbilityArchetypeBase
 
     public AbilityWildcardGroup IsWithinGroup { get; private set; }
 
+    #region Constructors
+    // TODO: ...similar to that for AbilityArchetype, but with an arg for AbilityWildcardGroup
+    #endregion
 }

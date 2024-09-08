@@ -29,6 +29,7 @@ public class AbilityInstance
     // To make a public property present in the DataGridView (and thus accessible to business logic), but NOT displayed:
     //     dataGridView1.Columns[0].Visible = false;
 
+    #region Public Properties
     [Browsable(false)]
     public AbilityArchetype Archetype { get; private set; }
 
@@ -81,7 +82,9 @@ public class AbilityInstance
     // TODO:
     // Something more will be needed to represent how Languages
     // get a Puissant-like bonus from a related Language with a higher Score...
+    #endregion
 
+    #region Constructors
     public AbilityInstance ( AbilityArchetype ability, int xp = 0, string specialty = "", 
         bool hasAffinity = false, bool hasPuissance = false, int puissantBonus = 2)
     {
@@ -94,6 +97,7 @@ public class AbilityInstance
         this.HasPuissance  = hasPuissance;
         this.PuissantBonus = puissantBonus;
     }
+    #endregion
 
     public override string ToString ()
     {
