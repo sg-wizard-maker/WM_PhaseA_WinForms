@@ -103,7 +103,7 @@
     <Compile Include="Models\Abilities\AbilityXpCosts.cs" />
     <Compile Include="Models\Abilities\AbilityArchetypeBase.cs" />
     <Compile Include="Models\Abilities\AbilityWildcardGroup.cs" />
-    <Compile Include="Models\Abilities\ISomeInterfaceName.cs" />
+    <Compile Include="Models\Abilities\InterfacesForAbilities.cs" />
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\Covenant.cs" />
     <Compile Include="Models\Saga.cs" />

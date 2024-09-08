@@ -2,7 +2,7 @@
 
 namespace WizardMakerPrototype.Models;
 
-public class AbilityWildcardGroup : ISomeInterfaceName
+public class AbilityWildcardGroup : IOrdinaryArchetypeOrWildcardGroup
 {
     public string Name        { get; set; }
     public string Description { get; set; }

@@ -2,7 +2,7 @@
 
 namespace WizardMakerPrototype.Models;
 
-public class AbilityArchetypeWildcard : AbilityArchetypeBase, ISomeInterfaceName
+public class AbilityArchetypeWildcard : AbilityArchetypeBase
 {
     public AbilityWildcardGroup IsWithinGroup { get; private set; }
 

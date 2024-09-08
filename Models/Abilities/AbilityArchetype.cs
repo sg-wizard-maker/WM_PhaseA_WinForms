@@ -25,7 +25,7 @@ namespace WizardMakerPrototype.Models;
 /// For that kind of Ability, the class <see cref="AbilityArchetypeWildcard">AbilityArchetypeWildcard</see> <br/>
 /// is analogous to <see cref="AbilityArchetype">AbilityArchetype</see>, serving the same purpose.
 /// </summary>
-public class AbilityArchetype : AbilityArchetypeBase, ISomeInterfaceName
+public class AbilityArchetype : AbilityArchetypeBase, IOrdinaryArchetypeOrWildcardGroup
 {
     #region Properties possibly useful for LINQ queries
     public bool IsSingle   { get { return true;  } }
@@ -61,6 +61,12 @@ public class AbilityArchetype : AbilityArchetypeBase, ISomeInterfaceName
 
     // ...
     #endregion
+
+    // TODO:
+    // Change the static data setup to use AbilityArchetypeWildcard + AbilityWildCardGroup,
+    // for (Living Languages, Dead Languages, Craft, Profession, Area Lore, Org Lore) etc.
+    //
+    // This, coupled with altering the data setup in AbilitiesTabPage.cs ...
 
     #region Setup static data for Common Abilities
     // TODO:
