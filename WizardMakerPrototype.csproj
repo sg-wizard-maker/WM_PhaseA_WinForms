@@ -95,6 +95,15 @@
     <Compile Include="Controls_WinForms\CharacterTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Models\Abilities\AbilityCategory.cs" />
+    <Compile Include="Models\Abilities\AbilityInstance.cs" />
+    <Compile Include="Models\Abilities\AbilityType.cs" />
+    <Compile Include="Models\Abilities\AbilityArchetypeWildcard.cs" />
+    <Compile Include="Models\Abilities\AbilityArchetype.cs" />
+    <Compile Include="Models\Abilities\AbilityXpCosts.cs" />
+    <Compile Include="Models\Abilities\AbilityArchetypeBase.cs" />
+    <Compile Include="Models\Abilities\AbilityWildcardGroup.cs" />
+    <Compile Include="Models\Abilities\ISomeInterfaceName.cs" />
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\Covenant.cs" />
     <Compile Include="Models\Saga.cs" />
@@ -112,7 +121,7 @@
     <Compile Include="Controls_WinForms\CharacteristicsGridControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Models\AbilityModels.cs" />
+    <Compile Include="Models\Abilities\_AbilityModels.cs" />
     <Compile Include="Models\ExtremelyPrimitiveAbilityModel.cs" />
     <Compile Include="Models\SingleJournalEntry.cs" />
     <Compile Include="Program.cs" />
