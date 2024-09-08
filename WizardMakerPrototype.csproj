@@ -121,7 +121,6 @@
     <Compile Include="Controls_WinForms\CharacteristicsGridControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Models\Abilities\_AbilityModels.cs" />
     <Compile Include="Models\ExtremelyPrimitiveAbilityModel.cs" />
     <Compile Include="Models\SingleJournalEntry.cs" />
     <Compile Include="Program.cs" />
