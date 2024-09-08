@@ -343,6 +343,7 @@ public class AbilitiesFlowLayoutPanel : FlowLayoutPanel
         };
         int numSpecialties = randomSpecialties.Count() - 1;
 
+        // TODO: Need to add from AbilityArchetypeWildcard.AllAbilityArchetypeWildcards as well as AbilityArchetype.AllCommonAbilities ...
         foreach (var arch in AbilityArchetype.AllCommonAbilities)
         {
             int randomXP = Utility.RandomInteger(rand, 0, 150);

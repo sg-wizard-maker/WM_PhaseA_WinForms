@@ -38,8 +38,8 @@ public class AbilityArchetype : AbilityArchetypeBase, IOrdinaryArchetypeOrWildca
         bool cannotUseUnskilled = false, bool isAccelerated = false )
     {
         this.Category = category;
-        this.Type = type;
-        this.Name = name;
+        this.Type     = type;
+        this.Name     = name;
         this.CommonSpecializations = specializations ?? new List<string>();
         this.BaseXpCost            = isAccelerated ? 1m : 5m;
         this.CannotUseUnskilled    = cannotUseUnskilled;

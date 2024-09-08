@@ -9,9 +9,9 @@ namespace WizardMakerPrototype.Models;
 public class AbilityArchetypeWildcard : AbilityArchetypeBase
 {
     #region Properties possibly useful for LINQ queries
-    public bool IsSingle { get { return true; } }
-    public bool IsGroup { get { return false; } }
-    public bool IsWildcard { get { return true; } }
+    public bool IsSingle   { get { return true;  } }
+    public bool IsGroup    { get { return false; } }
+    public bool IsWildcard { get { return true;  } }
     #endregion
 
     #region Public Properties
