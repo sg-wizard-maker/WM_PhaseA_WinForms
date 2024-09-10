@@ -8,6 +8,11 @@ using WizardMakerPrototype.Models;
 
 namespace WizardMakerPrototype;
 
+/// <summary>
+/// This interface is used (rather than interitance) so that <br/>
+/// a collection can be composed of mixed AbilityArchetype + AbilityArchetypeWildcard objects, <br/>
+/// and so that AbilityInstance can refer to either of these types as the 'parent' Archetype.
+/// </summary>
 public interface IAbilityArchetype
 {
     #region Properties possibly useful for LINQ queries
@@ -33,7 +38,8 @@ public interface IAbilityArchetype
 /// to appear on the same list as AbilityWildcardGroup (such as for "Craft: X").
 /// <br/>
 /// This is primarily useful when viewing Abilities "by Ability Type", 
-/// as you would want to "Add new General Ability", and find (Athletics, ..., Craft: X) on the same list.
+/// as you would want to "Add new General Ability", and find (Athletics, ..., Craft: X) on the same list,
+/// despite that they are of distinct types (AbilityArchetype, AbilityArchetypeWildcard).
 /// </summary>
 public interface IOrdinaryArchetypeOrWildcardGroup
 {
