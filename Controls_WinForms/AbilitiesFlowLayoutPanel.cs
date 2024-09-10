@@ -347,10 +347,9 @@ public class AbilitiesFlowLayoutPanel : FlowLayoutPanel
         // Need to add from AbilityArchetypeWildcard.AllAbilityArchetypeWildcards as well as AbilityArchetype.AllCommonAbilities ...
         // ...Seems to be working thus far, need more testing and some review to deal with a couple of awkward bits around .Name
 
-        List<AbilityArchetypeBase> combinedList = new List<AbilityArchetypeBase>();
+        List<IAbilityArchetype> combinedList = new List<IAbilityArchetype>();
         combinedList.AddRange(AbilityArchetype.AllCommonAbilities);
         combinedList.AddRange(AbilityArchetypeWildcard.AllAbilityArchetypeWildcards);
-        //foreach (var arch in AbilityArchetype.AllCommonAbilities)
         foreach (var arch in combinedList)
         {
             int randomXP = Utility.RandomInteger(rand, 0, 150);

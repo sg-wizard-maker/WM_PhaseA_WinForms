@@ -38,7 +38,7 @@ public class FormForArM5Character : Form
 
         // TODO:
         // Why is resizing the Form MUCH slower when using TabControl, rather than PanelForAbilityGroupings ?
-        // - Found that SuspendLayout()/ResumeLayout() did not affect performence -- may be useful only "when adding several controls"
+        // - Found that SuspendLayout()/ResumeLayout() did not affect performance -- may be useful only "when adding several controls"
         // - Found that setting ControlStyles.OptimizedDoubleBuffer improved performance considerably, for (AbilityGrid, AbilityLabelAndGridPanel, CharacterTabControl)
         //   but not for (AbilitiesFlowLayoutPanel, AbilitiesTabPage)
         this.Controls.Add(this.TheTabControl);
@@ -48,9 +48,12 @@ public class FormForArM5Character : Form
         this.PerformLayout();
         #endregion
 
-        var foo = Saga.CurrentSaga;  // for breakpoint
-        var bar = AbilityWildcardGroup.AllAbilityWildcardGroups;  // for breakpoint
-        var baz = AbilityArchetypeWildcard.AllAbilityArchetypeWildcards;  // for breakpoint
+        #region DEBUG variables for inspection via breakpoint
+        var debugSaga                      = Saga.CurrentSaga;
+        var debugWildCardGroups            = AbilityWildcardGroup.AllAbilityWildcardGroups;
+        var debugAbilityArchetypes         = AbilityArchetype.AllCommonAbilities;
+        var debugAbilityArchetypeWildcards = AbilityArchetypeWildcard.AllAbilityArchetypeWildcards;
+        #endregion
     }
     #endregion
 

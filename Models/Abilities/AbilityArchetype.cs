@@ -25,13 +25,22 @@ namespace WizardMakerPrototype.Models;
 /// For that kind of Ability, the class <see cref="AbilityArchetypeWildcard">AbilityArchetypeWildcard</see> <br/>
 /// is analogous to <see cref="AbilityArchetype">AbilityArchetype</see>, serving the same purpose.
 /// </summary>
-public class AbilityArchetype : AbilityArchetypeBase, IOrdinaryArchetypeOrWildcardGroup
+public class AbilityArchetype : IAbilityArchetype, IOrdinaryArchetypeOrWildcardGroup
 {
     #region Properties possibly useful for LINQ queries
     public bool IsSingle   { get { return true;  } }
     public bool IsGroup    { get { return false; } }
     public bool IsWildcard { get { return false; } }
     #endregion
+
+    public string       Name                  { get; protected set; }
+    //public string     Description           { get; protected set; }  // Likely, but future
+    public string       Category              { get; protected set; }
+    public AbilityType  Type                  { get; protected set; }
+    public List<string> CommonSpecializations { get; protected set; } = new List<string>();
+    public bool         CannotUseUnskilled    { get; protected set; } = false;
+    public bool         IsAccelerated         { get; protected set; } = false;
+    public decimal      BaseXpCost            { get; protected set; }
 
     #region Constructors
     public AbilityArchetype ( string category, AbilityType type, string name, List<string> specializations, 
@@ -65,6 +74,16 @@ public class AbilityArchetype : AbilityArchetypeBase, IOrdinaryArchetypeOrWildca
         AllCommonAbilities.AddRange( new List<AbilityArchetype>() { AreaLoreVeryBasic, AreaLoreSomeCountry, AreaLoreSomeTribunal, AreaLoreSomeCovenant } );
         AllCommonAbilities.AddRange( new List<AbilityArchetype>() { OrgLoreChurch, OrgLoreOrderOfHermes, OrgLoreVeryBasic, OrgLoreSomeKnightOrder, OrgLoreSomeNobleCourt, OrgLoreSomeCraftGuild } );
         AllCommonAbilities.AddRange( new List<AbilityArchetype>() { MartialSecret, PhysicalSecret, SocialSecret, LangSecret, CraftSecret, ProfSecret, AcadSecret, OrgLoreSecret, AreaLoreSecret } );
+    }
+    #endregion
+
+    #region Public methods
+    public override string ToString ()
+    {
+        string str = string.Format("Name='{0}', Category='{1}', Type='{2}'",
+            this.Name, this.Category, this.Type.Name
+            );
+        return str;
     }
     #endregion
 

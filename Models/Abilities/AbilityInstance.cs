@@ -37,7 +37,7 @@ public class AbilityInstance
 
     [Browsable(false)]
     //public AbilityArchetype Archetype { get; private set; }
-    public AbilityArchetypeBase Archetype { get; private set; }
+    public IAbilityArchetype Archetype { get; private set; }
 
     [Browsable(false)]
     public decimal     BaseXPCost { get { return Archetype.BaseXpCost; } }
@@ -115,7 +115,7 @@ public class AbilityInstance
     #region Constructors
     //public AbilityInstance ( AbilityArchetype ability, int xp = 0, string specialty = "", 
     //    bool hasAffinity = false, bool hasPuissance = false, int puissantBonus = 2)
-    public AbilityInstance ( AbilityArchetypeBase ability, int xp = 0, string specialty = "", 
+    public AbilityInstance ( IAbilityArchetype ability, int xp = 0, string specialty = "", 
         bool hasAffinity = false, bool hasPuissance = false, int puissantBonus = 2)
     {
         decimal xpCost = hasAffinity ? AbilityXpCosts.BaseXpCostWithAffinity(ability.BaseXpCost) : ability.BaseXpCost;

@@ -4,7 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WizardMakerPrototype.Models;
+using WizardMakerPrototype.Models;
+
+namespace WizardMakerPrototype;
+
+public interface IAbilityArchetype
+{
+    #region Properties possibly useful for LINQ queries
+    public bool IsSingle   { get; }
+    public bool IsGroup    { get; }
+    public bool IsWildcard { get; }
+    #endregion
+
+    public string       Name                  { get; }
+    //public string     Description           { get; }  // Likely, but future
+    public string       Category              { get; }
+    public AbilityType  Type                  { get; }
+    public List<string> CommonSpecializations { get; }
+    public bool         CannotUseUnskilled    { get; }
+    public bool         IsAccelerated         { get; }
+    public decimal      BaseXpCost            { get; }
+}
 
 /// <summary>
 /// This interface is used to mark distinct (non-common-inheritance) classes 

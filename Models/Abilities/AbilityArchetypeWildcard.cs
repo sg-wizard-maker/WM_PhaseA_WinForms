@@ -6,7 +6,7 @@ namespace WizardMakerPrototype.Models;
 /// <summary>
 /// 
 /// </summary>
-public class AbilityArchetypeWildcard : AbilityArchetypeBase
+public class AbilityArchetypeWildcard : IAbilityArchetype
 {
     #region Properties possibly useful for LINQ queries
     public bool IsSingle   { get { return true;  } }
@@ -15,17 +15,13 @@ public class AbilityArchetypeWildcard : AbilityArchetypeBase
     #endregion
 
     #region Public Properties
-    public AbilityWildcardGroup IsWithinGroup   { get; protected set; }
-    public string               SpecificAbility { get; protected set; }
-
-    public new string Name {
+    public string Name {
         get
         {
             string parentName = IsWithinGroup.Name;
             string str = string.Format("{0}: {1}", parentName, this.SpecificAbility);
             return str;
         }
-        // Differs from parent class, by virtue of having no setter here.  This causes some awkwardness elsewhere...
     }
 
     public string FullName
@@ -37,6 +33,17 @@ public class AbilityArchetypeWildcard : AbilityArchetypeBase
             return str;
         }
     }
+
+    //public string     Description           { get; protected set; }  // Likely, but future
+    public string       Category              { get; protected set; }
+    public AbilityType  Type                  { get; protected set; }
+    public List<string> CommonSpecializations { get; protected set; } = new List<string>();
+    public bool         CannotUseUnskilled    { get; protected set; } = false;
+    public bool         IsAccelerated         { get; protected set; } = false;
+    public decimal      BaseXpCost            { get; protected set; }
+
+    public AbilityWildcardGroup IsWithinGroup   { get; protected set; }
+    public string               SpecificAbility { get; protected set; }
     #endregion
 
     #region Constructors
@@ -71,7 +78,7 @@ public class AbilityArchetypeWildcard : AbilityArchetypeBase
     public override string ToString ()
     {
         string str = string.Format("Name='{0}', WCGroup='{1}', Category='{2}', Type='{3}'",
-            this.Name, this.IsWithinGroup, this.Category, this.Type
+            this.Name, this.IsWithinGroup.Name, this.Category, this.Type.Name
             );
         return str;
     }
