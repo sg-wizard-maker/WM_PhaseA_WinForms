@@ -13,12 +13,27 @@ public class AbilitiesTabPage : TabPage
 {
     #region Public members
     public SplitContainer           TheSplitContainer   { get; private set; }
-    public SplitterPanel            SplitPanel1         { get; private set; }
-    public SplitterPanel            SplitPanel2         { get; private set; }
+    //public SplitterPanel            SplitPanel1         { get; private set; }
+    //public SplitterPanel            SplitPanel2         { get; private set; }
+
+    public Label LabelAbilityType          { get; private set; }
+    public Label LabelAbilityCategory      { get; private set; }
+    public Label LabelAbilityWildcardGroup { get; private set; }
+    public Label LabelAbility              { get; private set; }
+    public Label LabelWildcardAbility      { get; private set; }
+
+    public ComboBox Combo1 { get; private set; }
+    public ComboBox Combo2 { get; private set; }
+    public ComboBox Combo3 { get; private set; }
+    public ComboBox Combo4 { get; private set; }
+    public ComboBox Combo5 { get; private set; }
+    //public ComboBox Combo6 { get; private set; }
+    //public ComboBox Combo7 { get; private set; }
 
     public Label                    PlaceHolderLabel1   { get; private set; }
     public Label                    PlaceHolderLabel2   { get; private set; }
     public Label                    PlaceHolderLabel3   { get; private set; }
+
     public AbilitiesFlowLayoutPanel TheFlowLayoutPanel  { get; private set; }
     // Hmmm... Putting FlowLayoutPanel inside TableLayoutPanel did not work well (only one column in FlowLayoutPanel).
     #endregion
@@ -38,21 +53,78 @@ public class AbilitiesTabPage : TabPage
             BorderStyle      = BorderStyle.FixedSingle,
             FixedPanel       = FixedPanel.Panel1,
         };
-        this.SplitPanel1 = new SplitterPanel(this.TheSplitContainer);
-        this.SplitPanel2 = new SplitterPanel(this.TheSplitContainer);
+        //this.SplitPanel1 = new SplitterPanel(this.TheSplitContainer);
+        //this.SplitPanel2 = new SplitterPanel(this.TheSplitContainer);
 
-        this.PlaceHolderLabel1   = new Label() { Text = "Placeholder: Characteristics 1", Width = 1024, BackColor = Color.Coral };
-        this.PlaceHolderLabel2   = new Label() { Text = "Placeholder: Characteristics 2", Width = 1024, BackColor = Color.Coral, Location = new Point(0, 24) };
-        this.PlaceHolderLabel3   = new Label() { Text = "Placeholder: Characteristics 3", Width = 1024, BackColor = Color.Coral, Location = new Point(0, 48) };
+        this.LabelAbilityType          = new Label() { Text = "Ability Type: ",     Width=85, Location = new Point(0,  25) };
+        this.LabelAbilityCategory      = new Label() { Text = "Ability Category: ", Width=85, Location = new Point(0,  50) };
+        this.LabelAbility              = new Label() { Text = "Ability: ",          Width=85, Location = new Point(0,  75) };
+        this.LabelAbilityWildcardGroup = new Label() { Text = "Wildcard Group: ",   Width=85, Location = new Point(0, 100) };
+        this.LabelWildcardAbility      = new Label() { Text = "Wildcard Ability: ", Width=85, Location = new Point(0, 125) };
+        
+        this.Combo1 = new ComboBox()
+        {
+            Width = 180,
+            Location = new Point(85, 25),
+            DataSource = AbilityType.Types,
+            DisplayMember = "Name",
+        };
+        this.Combo2 = new ComboBox()
+        {
+            Width = 180,
+            Location = new Point(85, 50),
+            DataSource = AbilityCategory.Categories,
+            //DisplayMember = "Name",
+        };
+        this.Combo3 = new ComboBox()
+        {
+            Width = 180,
+            Location = new Point(85, 75),
+            DataSource = AbilityArchetype.AllCommonAbilities,
+            DisplayMember = "Name",
+        };
+        this.Combo4 = new ComboBox()
+        {
+            Width = 180,
+            Location = new Point(85, 100),
+            DataSource = AbilityWildcardGroup.AllAbilityWildcardGroups,
+            DisplayMember = "DisplayName",
+        };
+        this.Combo5 = new ComboBox()
+        {
+            Width = 180,
+            Location = new Point(85, 125),
+            DataSource = AbilityArchetypeWildcard.AllAbilityArchetypeWildcards,
+            DisplayMember = "Name",
+        };
+
+        //this.PlaceHolderLabel1   = new Label() { Text = "Placeholder: Characteristics 1", Width = 1024, BackColor = Color.Coral };
+        //this.PlaceHolderLabel2   = new Label() { Text = "Placeholder: Characteristics 2", Width = 1024, BackColor = Color.Coral, Location = new Point(0, 24) };
+        //this.PlaceHolderLabel3   = new Label() { Text = "Placeholder: Characteristics 3", Width = 1024, BackColor = Color.Coral, Location = new Point(0, 48) };
         this.TheFlowLayoutPanel = new AbilitiesFlowLayoutPanel() 
         {
             AutoSize     = true, 
             AutoSizeMode = AutoSizeMode.GrowAndShrink,
         };
 
-        this.TheSplitContainer.Panel1.Controls.Add(this.PlaceHolderLabel1);
-        this.TheSplitContainer.Panel1.Controls.Add(this.PlaceHolderLabel2);
-        this.TheSplitContainer.Panel1.Controls.Add(this.PlaceHolderLabel3);
+
+
+        //this.TheSplitContainer.Panel1.Controls.Add(this.PlaceHolderLabel1);
+        //this.TheSplitContainer.Panel1.Controls.Add(this.PlaceHolderLabel2);
+        //this.TheSplitContainer.Panel1.Controls.Add(this.PlaceHolderLabel3);
+
+        this.TheSplitContainer.Panel1.Controls.Add(this.LabelAbilityType);
+        this.TheSplitContainer.Panel1.Controls.Add(this.LabelAbilityCategory);
+        this.TheSplitContainer.Panel1.Controls.Add(this.LabelAbility);
+        this.TheSplitContainer.Panel1.Controls.Add(this.LabelAbilityWildcardGroup);
+        this.TheSplitContainer.Panel1.Controls.Add(this.LabelWildcardAbility);
+
+        this.TheSplitContainer.Panel1.Controls.Add(this.Combo1);
+        this.TheSplitContainer.Panel1.Controls.Add(this.Combo2);
+        this.TheSplitContainer.Panel1.Controls.Add(this.Combo3);
+        this.TheSplitContainer.Panel1.Controls.Add(this.Combo4);
+        this.TheSplitContainer.Panel1.Controls.Add(this.Combo5);
+
         this.TheSplitContainer.Panel2.Controls.Add(this.TheFlowLayoutPanel);
 
         this.Controls.Add(this.TheSplitContainer);
