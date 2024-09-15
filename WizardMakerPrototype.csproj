@@ -101,7 +101,6 @@
     <Compile Include="Models\Abilities\AbilityArchetypeWildcard.cs" />
     <Compile Include="Models\Abilities\AbilityArchetype.cs" />
     <Compile Include="Models\Abilities\AbilityXpCosts.cs" />
-    <Compile Include="Models\Abilities\AbilityArchetypeBase.cs" />
     <Compile Include="Models\Abilities\AbilityWildcardGroup.cs" />
     <Compile Include="Models\Abilities\InterfacesForAbilities.cs" />
     <Compile Include="Models\Character.cs" />
