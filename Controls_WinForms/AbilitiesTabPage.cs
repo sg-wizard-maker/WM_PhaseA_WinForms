@@ -74,7 +74,7 @@ public class AbilitiesTabPage : TabPage
             Width = 180,
             Location = new Point(85, 50),
             DataSource = AbilityCategory.Categories,
-            //DisplayMember = "Name",
+            DisplayMember = "Name",
         };
         this.Combo3 = new ComboBox()
         {

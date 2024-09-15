@@ -15,13 +15,13 @@ namespace WizardMakerPrototype.Models;
 //    //public bool IsWildcard { get; }
 //    #endregion
 //
-//    public string       Name                  { get; protected set; }
-//    //public string     Description           { get; protected set; }  // Likely, but future
-//    public string       Category              { get; protected set; }
-//    public AbilityType  Type                  { get; protected set; }
-//    public List<string> CommonSpecializations { get; protected set; } = new List<string>();
-//    public bool         CannotUseUnskilled    { get; protected set; } = false;
-//    public bool         IsAccelerated         { get; protected set; } = false;
-//    public decimal      BaseXpCost            { get; protected set; }
+//    public string          Name                  { get; protected set; }
+//    //public string        Description           { get; protected set; }  // Likely, but future
+//    public AbilityCategory Category              { get; protected set; }
+//    public AbilityType     Type                  { get; protected set; }
+//    public List<string>    CommonSpecializations { get; protected set; } = new List<string>();
+//    public bool            CannotUseUnskilled    { get; protected set; } = false;
+//    public bool            IsAccelerated         { get; protected set; } = false;
+//    public decimal         BaseXpCost            { get; protected set; }
 //
 //}

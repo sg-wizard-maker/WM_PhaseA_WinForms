@@ -43,7 +43,7 @@ public class AbilityInstance
     public decimal     BaseXPCost { get { return Archetype.BaseXpCost; } }
 
     [DisplayName("Category")]
-    public string Category   { get { return this.Archetype.Category;          } }
+    public string Category   { get { return this.Archetype.Category.Name;     } }
 
     [Browsable(false)]
     public string Type       { get { return this.Archetype.Type.Name;         } }

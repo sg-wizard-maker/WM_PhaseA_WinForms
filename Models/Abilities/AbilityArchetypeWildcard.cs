@@ -34,20 +34,20 @@ public class AbilityArchetypeWildcard : IAbilityArchetype
         }
     }
 
-    //public string     Description           { get; protected set; }  // Likely, but future
-    public string       Category              { get; protected set; }
-    public AbilityType  Type                  { get; protected set; }
-    public List<string> CommonSpecializations { get; protected set; } = new List<string>();
-    public bool         CannotUseUnskilled    { get; protected set; } = false;
-    public bool         IsAccelerated         { get; protected set; } = false;
-    public decimal      BaseXpCost            { get; protected set; }
+    //public string        Description           { get; protected set; }  // Likely, but future
+    public AbilityCategory Category              { get; protected set; }
+    public AbilityType     Type                  { get; protected set; }
+    public List<string>    CommonSpecializations { get; protected set; } = new List<string>();
+    public bool            CannotUseUnskilled    { get; protected set; } = false;
+    public bool            IsAccelerated         { get; protected set; } = false;
+    public decimal         BaseXpCost            { get; protected set; }
 
     public AbilityWildcardGroup IsWithinGroup   { get; protected set; }
     public string               SpecificAbility { get; protected set; }
     #endregion
 
     #region Constructors
-    public AbilityArchetypeWildcard(AbilityWildcardGroup group, string specific, string category, AbilityType type,
+    public AbilityArchetypeWildcard(AbilityWildcardGroup group, string specific, AbilityCategory category, AbilityType type,
         List<string> specializations = null, bool cannotUseUnskilled = false, bool isAccelerated = false)
     {
         this.IsWithinGroup   = group;

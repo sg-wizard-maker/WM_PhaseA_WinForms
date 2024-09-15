@@ -14,11 +14,11 @@ public class AbilityWildcardGroup : IOrdinaryArchetypeOrWildcardGroup
     public bool IsWildcard { get { return true;  } }
     #endregion
 
-    public string      Name        { get; protected set; }
-    public string      FullName    { get; protected set; }
-    //public string    Description { get; protected set; }  // Likely, but future
-    public string      Category    { get; protected set; }
-    public AbilityType Type        { get; protected set; }
+    public string          Name        { get; protected set; }
+    public string          FullName    { get; protected set; }
+    //public string        Description { get; protected set; }  // Likely, but future
+    public AbilityCategory Category    { get; protected set; }
+    public AbilityType     Type        { get; protected set; }
 
     public string DisplayName { 
         get 
@@ -37,7 +37,7 @@ public class AbilityWildcardGroup : IOrdinaryArchetypeOrWildcardGroup
     }
 
     #region Constructors
-    public AbilityWildcardGroup( string category, AbilityType type, string name, string fullName )
+    public AbilityWildcardGroup( AbilityCategory category, AbilityType type, string name, string fullName )
     {
         // Note that many (but not all) AbilityWildcardGroup
         // have a corresponding AbilityCategory, which map 1:1 in membership.

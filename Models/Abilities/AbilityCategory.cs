@@ -22,8 +22,16 @@ public class AbilityCategory
     // Note that many AbilityCategory map directly to
     // an AbilityWildcardGroup (excepting Law: <specify>, and Theology: <specify>),
     // however they serve different purposes.
+    #region Public members
+    public string Name { get; }
+    #endregion
 
     #region Constructors
+    public AbilityCategory(string name)
+    {
+        this.Name = name;
+    }
+
     static AbilityCategory ()
     {
         Categories.Add( Martial      );
@@ -43,20 +51,20 @@ public class AbilityCategory
 
     #region Static data
     // TODO: Once serialization is integrated, this sort of static data will be loaded from JSON...
-    public static List<String> Categories = new List<string>();
+    public static List<AbilityCategory> Categories = new List<AbilityCategory>();
 
-    public static string Martial      = "Martial";
-    public static string Physical     = "Physical";
-    public static string Social       = "Social";
-    public static string Languages    = "Language";
-    public static string Crafts       = "Crafts";
-    public static string Professions  = "Professions";
-    public static string Academic     = "Academic";
-    public static string Supernatural = "Supernatural";
-    public static string Arcane       = "Arcane";
-    public static string RealmLores   = "Realm Lores";
-    public static string AreaLores    = "Area Lores";
-    public static string OrgLores     = "Org Lores";
+    public static AbilityCategory Martial      = new AbilityCategory("Martial");
+    public static AbilityCategory Physical     = new AbilityCategory("Physical");
+    public static AbilityCategory Social       = new AbilityCategory("Social");
+    public static AbilityCategory Languages    = new AbilityCategory("Language");
+    public static AbilityCategory Crafts       = new AbilityCategory("Crafts");
+    public static AbilityCategory Professions  = new AbilityCategory("Professions");
+    public static AbilityCategory Academic     = new AbilityCategory("Academic");
+    public static AbilityCategory Supernatural = new AbilityCategory("Supernatural");
+    public static AbilityCategory Arcane       = new AbilityCategory("Arcane");
+    public static AbilityCategory RealmLores   = new AbilityCategory("Realm Lores");
+    public static AbilityCategory AreaLores    = new AbilityCategory("Area Lores");
+    public static AbilityCategory OrgLores     = new AbilityCategory("Org Lores");
     #endregion
 
 }

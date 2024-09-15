@@ -20,6 +20,9 @@ public class Character
     public string        Name             { get; private set; }
     public CharacterType CharacterType    { get; private set; }
     public Covenant?     MemberOfCovenant { get; private set; }
+
+    public List<AbilityInstance> Abilities { get; private set; } = new List<AbilityInstance>();
+    // Will need additional members to represent access/denial to particular Abilities and groups thereof...
     #endregion
 
     #region Constructors
@@ -36,6 +39,24 @@ public class Character
     #endregion
 
     #region Public Methods
+    public List<AbilityInstance> AbilitiesOfType(AbilityType type) 
+    {
+        var query = (from a in this.Abilities
+                     where a.Archetype.Type == type
+                     select a);
+        var result = query.ToList();
+        return result;
+    }
+
+    //public List<AbilityInstance> AbilitiesOfCategory(AbilityCategory cat)
+    //{
+    //    var query = (from a in this.Abilities
+    //                 where a.Archetype.Category == cat
+    //                 select a);
+    //    var result = query.ToList();
+    //    return result;
+    //}
+
     public override string ToString()
     {
         string str = string.Format("Character: Tag='{0}', Name='{1}', Type={2}, Cov='{3}'", 

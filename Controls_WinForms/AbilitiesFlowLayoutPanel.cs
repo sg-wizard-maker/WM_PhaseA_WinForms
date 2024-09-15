@@ -301,18 +301,18 @@ public class AbilitiesFlowLayoutPanel : FlowLayoutPanel
         this.GroupingDisplayMode = AbilityGroupingsDisplayMode.ByAbilityCategory;
         var bindingListsByAbilityCategory = new Dictionary<string, BindingList<AbilityInstance>>()
         {
-            { AbilityCategory.Martial,      new BindingList<AbilityInstance>() },
-            { AbilityCategory.Physical,     new BindingList<AbilityInstance>() },
-            { AbilityCategory.Social,       new BindingList<AbilityInstance>() },
-            { AbilityCategory.Languages,    new BindingList<AbilityInstance>() },
-            { AbilityCategory.Crafts,       new BindingList<AbilityInstance>() },
-            { AbilityCategory.Professions,  new BindingList<AbilityInstance>() },
-            { AbilityCategory.Academic,     new BindingList<AbilityInstance>() },
-            { AbilityCategory.Supernatural, new BindingList<AbilityInstance>() },
-            { AbilityCategory.Arcane,       new BindingList<AbilityInstance>() },
-            { AbilityCategory.RealmLores,   new BindingList<AbilityInstance>() },
-            { AbilityCategory.AreaLores,    new BindingList<AbilityInstance>() },
-            { AbilityCategory.OrgLores,     new BindingList<AbilityInstance>() },
+            { AbilityCategory.Martial.Name,      new BindingList<AbilityInstance>() },
+            { AbilityCategory.Physical.Name,     new BindingList<AbilityInstance>() },
+            { AbilityCategory.Social.Name,       new BindingList<AbilityInstance>() },
+            { AbilityCategory.Languages.Name,    new BindingList<AbilityInstance>() },
+            { AbilityCategory.Crafts.Name,       new BindingList<AbilityInstance>() },
+            { AbilityCategory.Professions.Name,  new BindingList<AbilityInstance>() },
+            { AbilityCategory.Academic.Name,     new BindingList<AbilityInstance>() },
+            { AbilityCategory.Supernatural.Name, new BindingList<AbilityInstance>() },
+            { AbilityCategory.Arcane.Name,       new BindingList<AbilityInstance>() },
+            { AbilityCategory.RealmLores.Name,   new BindingList<AbilityInstance>() },
+            { AbilityCategory.AreaLores.Name,    new BindingList<AbilityInstance>() },
+            { AbilityCategory.OrgLores.Name,     new BindingList<AbilityInstance>() },
         };
         // Note: 
         // For a BindingList that is sortable, consider:
@@ -364,12 +364,12 @@ public class AbilitiesFlowLayoutPanel : FlowLayoutPanel
                 abilityInstance = new AbilityInstance(arch, 9999, "widest specialty name", true, true, 99);
             }
 
-            bindingListsByAbilityCategory[abilityInstance.Archetype.Category].Add(abilityInstance);
+            bindingListsByAbilityCategory[abilityInstance.Archetype.Category.Name].Add(abilityInstance);
         }
         int jj = 0;
         foreach (var grouping in AbilityCategory.Categories)
         {
-            var bindingList = bindingListsByAbilityCategory[grouping];
+            var bindingList = bindingListsByAbilityCategory[grouping.Name];
             var theGroupingPanel = abilityGroupingPanelsList[jj];
             theGroupingPanel.TheGrid.BindingContext = new BindingContext();  // TODO: Find out why this is needed when AbilitiesFlowLayoutPanel is contained in a TabPage, but not when it is contained in a Form directly...
             theGroupingPanel.TheGrid.DataSource = bindingList;

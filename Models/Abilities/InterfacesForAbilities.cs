@@ -21,14 +21,14 @@ public interface IAbilityArchetype
     public bool IsWildcard { get; }
     #endregion
 
-    public string       Name                  { get; }
-    //public string     Description           { get; }  // Likely, but future
-    public string       Category              { get; }
-    public AbilityType  Type                  { get; }
-    public List<string> CommonSpecializations { get; }
-    public bool         CannotUseUnskilled    { get; }
-    public bool         IsAccelerated         { get; }
-    public decimal      BaseXpCost            { get; }
+    public string          Name                  { get; }
+    //public string        Description           { get; }  // Likely, but future
+    public AbilityCategory Category              { get; }
+    public AbilityType     Type                  { get; }
+    public List<string>    CommonSpecializations { get; }
+    public bool            CannotUseUnskilled    { get; }
+    public bool            IsAccelerated         { get; }
+    public decimal         BaseXpCost            { get; }
 }
 
 /// <summary>
