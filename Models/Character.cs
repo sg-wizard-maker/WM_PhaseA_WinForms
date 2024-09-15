@@ -42,7 +42,7 @@ public class Character
     public List<AbilityInstance> AbilitiesOfType(AbilityType type) 
     {
         var query = (from a in this.Abilities
-                     where a.Archetype.Type == type
+                     where a.Archetype.AbilityType == type
                      select a);
         var result = query.ToList();
         return result;

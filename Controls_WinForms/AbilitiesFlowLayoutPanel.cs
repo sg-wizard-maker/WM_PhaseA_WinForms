@@ -364,7 +364,7 @@ public class AbilitiesFlowLayoutPanel : FlowLayoutPanel
                 abilityInstance = new AbilityInstance(arch, 9999, "widest specialty name", true, true, 99);
             }
 
-            bindingListsByAbilityCategory[abilityInstance.Archetype.Category.Name].Add(abilityInstance);
+            bindingListsByAbilityCategory[abilityInstance.Archetype.AbilityCategory.Name].Add(abilityInstance);
         }
         int jj = 0;
         foreach (var grouping in AbilityCategory.Categories)
@@ -433,7 +433,7 @@ public class AbilitiesFlowLayoutPanel : FlowLayoutPanel
                 abilityInstance = new AbilityInstance(arch, 9999, "widest specialty name", true, true, 99);
             }
 
-            bindingListsByAbilityType[abilityInstance.Archetype.Type.Name].Add(abilityInstance);
+            bindingListsByAbilityType[abilityInstance.Archetype.AbilityType.Name].Add(abilityInstance);
         }
         int jj = 0;
         foreach (var grouping in AbilityType.Types)

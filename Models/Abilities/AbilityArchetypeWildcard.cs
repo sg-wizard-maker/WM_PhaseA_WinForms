@@ -35,8 +35,8 @@ public class AbilityArchetypeWildcard : IAbilityArchetype
     }
 
     //public string        Description           { get; protected set; }  // Likely, but future
-    public AbilityCategory Category              { get; protected set; }
-    public AbilityType     Type                  { get; protected set; }
+    public AbilityCategory AbilityCategory       { get; protected set; }
+    public AbilityType     AbilityType           { get; protected set; }
     public List<string>    CommonSpecializations { get; protected set; } = new List<string>();
     public bool            CannotUseUnskilled    { get; protected set; } = false;
     public bool            IsAccelerated         { get; protected set; } = false;
@@ -51,8 +51,8 @@ public class AbilityArchetypeWildcard : IAbilityArchetype
         List<string> specializations = null, bool cannotUseUnskilled = false, bool isAccelerated = false)
     {
         this.IsWithinGroup   = group;
-        this.Category        = category;
-        this.Type            = type;
+        this.AbilityCategory = category;
+        this.AbilityType     = type;
         this.SpecificAbility = specific;
 
         this.CommonSpecializations = specializations ?? new List<string>();
@@ -78,7 +78,7 @@ public class AbilityArchetypeWildcard : IAbilityArchetype
     public override string ToString ()
     {
         string str = string.Format("Name='{0}', WCGroup='{1}', Category='{2}', Type='{3}'",
-            this.Name, this.IsWithinGroup.Name, this.Category, this.Type.Name
+            this.Name, this.IsWithinGroup.Name, this.AbilityCategory, this.AbilityType.Name
             );
         return str;
     }

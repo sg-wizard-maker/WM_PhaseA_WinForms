@@ -35,8 +35,8 @@ public class AbilityArchetype : IAbilityArchetype, IOrdinaryArchetypeOrWildcardG
 
     public string          Name                  { get; protected set; }
     //public string        Description           { get; protected set; }  // Likely, but future
-    public AbilityCategory Category              { get; protected set; }
-    public AbilityType     Type                  { get; protected set; }
+    public AbilityCategory AbilityCategory       { get; protected set; }
+    public AbilityType     AbilityType           { get; protected set; }
     public List<string>    CommonSpecializations { get; protected set; } = new List<string>();
     public bool            CannotUseUnskilled    { get; protected set; } = false;
     public bool            IsAccelerated         { get; protected set; } = false;
@@ -46,9 +46,9 @@ public class AbilityArchetype : IAbilityArchetype, IOrdinaryArchetypeOrWildcardG
     public AbilityArchetype ( AbilityCategory category, AbilityType type, string name, List<string> specializations, 
         bool cannotUseUnskilled = false, bool isAccelerated = false )
     {
-        this.Category = category;
-        this.Type     = type;
-        this.Name     = name;
+        this.AbilityCategory       = category;
+        this.AbilityType           = type;
+        this.Name                  = name;
         this.CommonSpecializations = specializations ?? new List<string>();
         this.BaseXpCost            = isAccelerated ? 1m : 5m;
         this.CannotUseUnskilled    = cannotUseUnskilled;
@@ -81,7 +81,7 @@ public class AbilityArchetype : IAbilityArchetype, IOrdinaryArchetypeOrWildcardG
     public override string ToString ()
     {
         string str = string.Format("Name='{0}', Category='{1}', Type='{2}'",
-            this.Name, this.Category, this.Type.Name
+            this.Name, this.AbilityCategory, this.AbilityType.Name
             );
         return str;
     }

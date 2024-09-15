@@ -23,8 +23,8 @@ public interface IAbilityArchetype
 
     public string          Name                  { get; }
     //public string        Description           { get; }  // Likely, but future
-    public AbilityCategory Category              { get; }
-    public AbilityType     Type                  { get; }
+    public AbilityCategory AbilityCategory       { get; }
+    public AbilityType     AbilityType           { get; }
     public List<string>    CommonSpecializations { get; }
     public bool            CannotUseUnskilled    { get; }
     public bool            IsAccelerated         { get; }

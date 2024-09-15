@@ -43,35 +43,20 @@ public class AbilityInstance
     public decimal     BaseXPCost { get { return Archetype.BaseXpCost; } }
 
     [DisplayName("Category")]
-    public string Category   { get { return this.Archetype.Category.Name;     } }
+    public string Category   { get { return this.Archetype.AbilityCategory.Name;     } }
 
     [Browsable(false)]
-    public string Type       { get { return this.Archetype.Type.Name;         } }
+    public string Type       { get { return this.Archetype.AbilityType.Name;         } }
 
     [DisplayName("Type")]
-    public string TypeAbbrev { get { return this.Archetype.Type.Abbreviation; } }
+    public string TypeAbbrev { get { return this.Archetype.AbilityType.Abbreviation; } }
 
     public string Name       
     { 
-        // Hmmm, this is a bit awkward.  Can likely improve on it, by massaging the two classes involved...
         get 
         {
-            var arch = (this.Archetype as AbilityArchetype);
-            var wc   = (this.Archetype as AbilityArchetypeWildcard);
-
-            if (arch is not null)
-            {
-                string str = arch.Name + (arch.CannotUseUnskilled ? "*" : "");
-                return str;
-            }
-            if (wc is not null)
-            {
-                string str = wc.Name + (wc.CannotUseUnskilled ? "*" : "");
-                return str;
-            }
-            throw new System.Exception("Impossible: AbilityInstance got strange archetype, neither AbilityArchetype nor AbilityArchetypeWildcard");
-
-            //return this.Archetype.Name + (this.Archetype.CannotUseUnskilled ? "*" : ""); 
+            string str = this.Archetype.Name + (this.Archetype.CannotUseUnskilled ? "*" : "");
+            return str;
         } 
     }
     public int    XP         { get; set; }
