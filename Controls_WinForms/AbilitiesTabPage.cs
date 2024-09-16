@@ -163,8 +163,8 @@ public class AbilitiesTabPage : TabPage
     public void DoDataSetup()
     {
         // Note: Call exactly ONE of the .DoDataSetupForAbilityXXX() methods, calling additional will add duplicate Abilities data.
-        this.TheFlowLayoutPanel.DoDataSetupForAbilityCategories();
-        //this.TheFlowLayoutPanel.DoDataSetupForAbilityTypes();
+        //this.TheFlowLayoutPanel.DoDataSetupForAbilityCategories();
+        this.TheFlowLayoutPanel.DoDataSetupForAbilityTypes();
         //this.TheFlowLayoutPanel.DoDataSetupForOneGiantList();
         //// TODO: Maybe add another kind, "ByAbilityTypeButWithGeneralSplitUp" ...
 

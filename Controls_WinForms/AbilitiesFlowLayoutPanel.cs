@@ -305,7 +305,7 @@ public class AbilitiesFlowLayoutPanel : FlowLayoutPanel
 
     #region Methods to insert data for the contained Grids
     /// <summary>
-    /// Setup data for N grids in the flowlayoutpanel (N == number of Ability Categories), 
+    /// Setup data for N grids in the flowlayoutpanel (one per AbilityCategory), 
     /// with Abilities of one AbilityCategory per grid.<br/>
     /// Note: ONE of the DoDataSetupForAbilityXXX() methods can be executed; they will interfere with one another!
     /// </summary>
@@ -362,7 +362,7 @@ public class AbilitiesFlowLayoutPanel : FlowLayoutPanel
     }
 
     /// <summary>
-    /// Setup data for N grids in the flowlayoutpanel (N == number of Ability Types), 
+    /// Setup data for N grids in the flowlayoutpanel (one per AbilityType), 
     /// with Abilities of one AbilityType per grid.<br/>
     /// Note: ONE of the DoDataSetupForAbilityXXX() methods can be executed; they will interfere with one another!
     /// </summary>
@@ -377,7 +377,7 @@ public class AbilitiesFlowLayoutPanel : FlowLayoutPanel
             { AbilityType.Academic.Name,     new BindingList<AbilityInstance>() },
             { AbilityType.Arcane.Name,       new BindingList<AbilityInstance>() },
             { AbilityType.Supernatural.Name, new BindingList<AbilityInstance>() },
-            { AbilityType.Secret.Name,       new BindingList<AbilityInstance>() },  // Not specified in (ArM5 core book), but useful
+            //{ AbilityType.Secret.Name,       new BindingList<AbilityInstance>() },  // Not specified in (ArM5 core book), but useful
         };
         int numAbilityTypes = bindingListsByAbilityType.Keys.Count;
 
@@ -414,7 +414,7 @@ public class AbilitiesFlowLayoutPanel : FlowLayoutPanel
     {
         // TODO: 
         // Consider what is needed, for this mode to 
-        // - Determine how many entries can fit, in the vertical space
+        // - Determine how many entries can fit, in the vertical space (based upon display resolution, presumably)
         //   for one Grid (possibly with AbilityGroupingPanel header)
         // - Put that many into a first grid,
         //   and the rest into one or more grids

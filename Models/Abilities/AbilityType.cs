@@ -48,7 +48,7 @@ public class AbilityType
         Types.Add( Academic     );
         Types.Add( Arcane       );
         Types.Add( Supernatural );
-        Types.Add( Secret       );  // Not specified in (ArM5 core), but useful
+        //Types.Add( Secret       );  // Not specified in (ArM5 core), but useful
     }
     #endregion
 
