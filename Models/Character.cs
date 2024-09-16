@@ -154,12 +154,6 @@ public class Character
     #endregion
 
     #region Methods to setup static data
-    // TODO:
-    // Move data setup from AbilitiesFlowLayoutPanel.DoDataSetupForAbilityCategories() (etc) into here...
-    // 
-    // The setup of databindings will remain in that class;
-    // but all will be refactored to use data within (someCharacter).Abilities
-
     public void DEBUG_DataSetupOfAbilityInstances()
     {
         Random rand = new Random();
@@ -194,9 +188,7 @@ public class Character
 
             this.Abilities.Add(abilityInstance);
         }
-        int breakpointHere = 42;
     }
-
     #endregion
 }
 
