@@ -422,65 +422,31 @@ public class AbilitiesFlowLayoutPanel : FlowLayoutPanel
         // Hmmm, that sounds like some of it may belong in the AbilityGroupingPanel level...
         // 
         this.GroupingDisplayMode = AbilityGroupingsDisplayMode.SingleList;
-        var bindingListsByKey = new Dictionary<string, BindingList<AbilityInstance>>()
-        {
-            { "Abilities", new BindingList<AbilityInstance>() }
-        };
-        int numAbilityLists = bindingListsByKey.Keys.Count;
 
-        var abilityGroupingPanelsList = new List<AbilityLabelAndGridPanel>();
-        foreach (var grouping in bindingListsByKey)
+        const int NUM_PER_COLUMN = 41;  // Hack: An approximation for how many will fit (vertical resolution = 1200 px)
+        //const int NUM_PER_COLUMN = 14;
+        int numAbilityInstances = this.TheCharacter.Abilities.Count;
+        int numColumns = 0;
+        for (int nn = numAbilityInstances; nn > 0; nn -= NUM_PER_COLUMN) { numColumns++; }
+
+        var listOfBindingLists = new List<BindingList<AbilityInstance>>();
+        for (int col = 0; col < numColumns; col++)
         {
-            var groupingName = grouping.Key;
+            string groupingName = "Abilities " + col;
+            var bindingList = new BindingList<AbilityInstance>();
+            listOfBindingLists.Add( bindingList );
             var panel = new AbilityLabelAndGridPanel(groupingName);
-            abilityGroupingPanelsList.Add(panel);
             this.Controls.Add(panel);
-        }
 
-        Random rand = new Random();
-        string[] randomSpecialties = new string[] 
-        {
-            "---",
-            "daytime",
-            "at night",
-            "when on fire",
-            "routine matters",
-            "dangerous situations",
-            "France and the French",
-        };
-        int numSpecialties = randomSpecialties.Count() - 1;
-
-        List<AbilityArchetype> AllAbilitiesSortedByAlpha =
-        (
-            from aa in AbilityArchetype.AllCommonAbilities
-            select aa
-        )
-            .OrderBy(xx => xx.Name)
-            .ToList();
-        foreach (var arch in AllAbilitiesSortedByAlpha)
-        {
-            int randomXP = Utility.RandomInteger(rand, 0, 150);
-            string randomsSpecialty = randomSpecialties[Utility.RandomInteger(rand, 0, numSpecialties)];
-            bool hasPuissant = Utility.RandomInteger(rand, 0, 7) == 0;  // 1 in 8
-            bool hasAffinity = Utility.RandomInteger(rand, 0, 7) == 0;  // 1 in 8
-            var abilityInstance = new AbilityInstance( arch, randomXP, randomsSpecialty, hasPuissant, hasAffinity);
-
-            // For layout debug purposes:
-            if (arch == AllAbilitiesSortedByAlpha.First() )
+            for (int ii = 0; ii < NUM_PER_COLUMN; ii++)
             {
-                abilityInstance = new AbilityInstance(arch, 9999, "widest specialty name", true, true, 99);
+                int index = (col * NUM_PER_COLUMN) + ii;
+                if (index >= numAbilityInstances) { break; }  // Stop early for the last, partial-height column
+                var abilityInstance = this.TheCharacter.Abilities[index];
+                bindingList.Add(abilityInstance);
             }
-
-            bindingListsByKey["Abilities"].Add(abilityInstance);
-        }
-        int jj = 0;
-        foreach (var cat in AbilityCategory.Categories)  // TODO: Loop is needless for single list.  Planning to split into one per column, though...
-        {
-            var bindingList = bindingListsByKey["Abilities"];
-            var theGroupingPanel = abilityGroupingPanelsList[0];
-            theGroupingPanel.TheGrid.BindingContext = new BindingContext();  // TODO: Find out why this is needed when AbilitiesFlowLayoutPanel is contained in a TabPage, but not when it is contained in a Form directly...
-            theGroupingPanel.TheGrid.DataSource = bindingList;
-            jj++;
+            panel.TheGrid.BindingContext = new BindingContext();
+            panel.TheGrid.DataSource = bindingList;
         }
     }
     #endregion
