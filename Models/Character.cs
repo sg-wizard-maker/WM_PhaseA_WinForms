@@ -146,8 +146,8 @@ public class Character
 
     public override string ToString()
     {
-        string str = string.Format("Character: Tag='{0}', Name='{1}', Type={2}, Cov='{3}'", 
-            this.Tag, this.Name, this.CharacterType, this.MemberOfCovenant?.Name
+        string str = string.Format("Character: Tag='{0}', Name='{1}', Type={2}, Cov='{3}', #Abilities={4}", 
+            this.Tag, this.Name, this.CharacterType, this.MemberOfCovenant?.Name, this.Abilities.Count
         );
         return str;
     }
