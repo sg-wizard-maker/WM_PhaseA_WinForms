@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WizardMakerPrototype.Models;
 
@@ -39,8 +37,41 @@ public class Character
     #endregion
 
     #region Public Methods
+
+    #region Methods returning info about AbilityType / AbilityCategory / AbilityWildcardGroup
+    public List<AbilityType> ContainedAbilityTypes()
+    {
+        var query = (from a in this.Abilities
+                     select a.Archetype.AbilityType
+                     ).Distinct();
+        var result = query.ToList();
+        return result;
+    }
+
+    public List<AbilityCategory> ContainedAbilityCategories()
+    {
+        var query = (from a in this.Abilities
+                     select a.Archetype.AbilityCategory
+                     ).Distinct();
+        var result = query.ToList();
+        return result;
+    }
+
+    public List<AbilityWildcardGroup> ContainedAbilityWildcardGroups()
+    {
+        var query = (from a in this.Abilities
+                     select (a.Archetype as AbilityArchetypeWildcard).IsWithinGroup
+                     ).Distinct();
+        var result = query.ToList();
+        return result;
+    }
+    #endregion
+
+    #region Methods returning subsets of AbilityInstance
     public List<AbilityInstance> AbilitiesOfType(AbilityType type) 
     {
+        if (type     is null) { throw new ArgumentException("AbilitiesOfType: Got null AbilityType"); }
+
         var query = (from a in this.Abilities
                      where a.Archetype.AbilityType == type
                      select a);
@@ -48,14 +79,70 @@ public class Character
         return result;
     }
 
-    //public List<AbilityInstance> AbilitiesOfCategory(AbilityCategory cat)
-    //{
-    //    var query = (from a in this.Abilities
-    //                 where a.Archetype.Category == cat
-    //                 select a);
-    //    var result = query.ToList();
-    //    return result;
-    //}
+    public List<AbilityInstance> AbilitiesOfCategory(AbilityCategory category)
+    {
+        if (category is null) { throw new ArgumentException("AbilitiesOfCategory: Got null AbilityCategory"); }
+
+        var query = (from a in this.Abilities
+                     where a.Archetype.AbilityCategory == category
+                     select a);
+        var result = query.ToList();
+        return result;
+    }
+
+    /// <summary>
+    /// Given an AbilityType and an AbilityCategory (both must not be null), returns a collection of AbilityInstance which match.
+    /// </summary>
+    /// <param name="type">The AbilityType to match, must not be null.</param>
+    /// <param name="category">The AbilityCategory to match, must not be null.</param>
+    /// <returns>List of AbilityInstance matching both criteria</returns>
+    /// <exception cref="ArgumentException"></exception>
+    public List<AbilityInstance> AbilitiesOfTypeAndCategory(AbilityType type, AbilityCategory category)
+    {
+        if (type is null && category is null) { throw new ArgumentException("AbilitiesOfTypeAndCategory: Got null AbilityType AND null AbilityCategory"); }
+        if (type     is null) { throw new ArgumentException("AbilitiesOfTypeAndCategory: Got null AbilityType"); }
+        if (category is null) { throw new ArgumentException("AbilitiesOfTypeAndCategory: Got null AbilityCategory"); }
+
+        var query = (from a in this.Abilities
+                     where
+                            a.Archetype.AbilityType     == type
+                         && a.Archetype.AbilityCategory == category
+                     select a);
+        var result = query.ToList();
+        return result;
+    }
+
+    public List<AbilityInstance> AbilitiesOfNonWildcardKind()
+    {
+        var query = (from a in this.Abilities
+                     where a.Archetype is AbilityArchetype  // could also test a.Archetype.IsWildcard
+                     select a);
+        var result = query.ToList();
+        return result;
+    }
+
+    public List<AbilityInstance> AbilitiesOfWildcardKind()
+    {
+        var query = (from a in this.Abilities
+                     where a.Archetype is AbilityArchetypeWildcard  // could also test a.Archetype.IsWildcard
+                     select a);
+        var result = query.ToList();
+        return result;
+    }
+    #endregion
+
+    #region Methods for sanity-check of the Abilities list
+    public bool AbilitiesSanityCheckNoDuplicateArchetypes()
+    {
+        var query = (from a in this.Abilities
+                     select a.Archetype);
+        var queryDistinct = query.Distinct();
+        var listArchetypes = query.ToList();
+        var listArchetypesDistinct = queryDistinct.ToList();
+        bool result = (listArchetypes.Count == listArchetypesDistinct.Count);
+        return result;
+    }
+    #endregion
 
     public override string ToString()
     {
