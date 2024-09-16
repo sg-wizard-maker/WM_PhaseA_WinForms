@@ -17,14 +17,14 @@ public class Character
 
     public string        Name             { get; private set; }
     public CharacterType CharacterType    { get; private set; }
-    public Covenant?     MemberOfCovenant { get; private set; }
+    public Covenant      MemberOfCovenant { get; private set; }  // Likely nullable in the near future... Annoying warnings about that...
 
     public List<AbilityInstance> Abilities { get; private set; } = new List<AbilityInstance>();
     // Will need additional members to represent access/denial to particular Abilities and groups thereof...
     #endregion
 
     #region Constructors
-    public Character(string name, CharacterType characterType, Covenant? covenant = null)
+    public Character(string name, CharacterType characterType, Covenant covenant = null)
     {
         this.Tag              = "char_" + MaxTagInteger;
         this.Name             = name;
@@ -151,6 +151,52 @@ public class Character
         );
         return str;
     }
+    #endregion
+
+    #region Methods to setup static data
+    // TODO:
+    // Move data setup from AbilitiesFlowLayoutPanel.DoDataSetupForAbilityCategories() (etc) into here...
+    // 
+    // The setup of databindings will remain in that class;
+    // but all will be refactored to use data within (someCharacter).Abilities
+
+    public void DEBUG_DataSetupOfAbilityInstances()
+    {
+        Random rand = new Random();
+        string[] randomSpecialties = new string[] 
+        {
+            "---",
+            "daytime",
+            "at night",
+            "when on fire",
+            "routine matters",
+            "dangerous situations",
+            "France and the French",
+        };
+        int numSpecialties = randomSpecialties.Count() - 1;
+
+        List<IAbilityArchetype> combinedList = new List<IAbilityArchetype>();
+        combinedList.AddRange(AbilityArchetype.AllCommonAbilities);
+        combinedList.AddRange(AbilityArchetypeWildcard.AllAbilityArchetypeWildcards);
+        foreach (var arch in combinedList)
+        {
+            int randomXP = Utility.RandomInteger(rand, 0, 150);
+            string randomSpecialty = randomSpecialties[Utility.RandomInteger(rand, 0, numSpecialties)];
+            bool hasPuissant = Utility.RandomInteger(rand, 0, 7) == 0;  // 1 in 8
+            bool hasAffinity = Utility.RandomInteger(rand, 0, 7) == 0;  // 1 in 8
+            var abilityInstance = new AbilityInstance( arch, randomXP, randomSpecialty, hasPuissant, hasAffinity);
+
+            // For layout debug purposes:
+            if (arch == AbilityArchetype.AllCommonAbilities.First() )
+            {
+                abilityInstance = new AbilityInstance(arch, 9999, "widest specialty name", true, true, 99);
+            }
+
+            this.Abilities.Add(abilityInstance);
+        }
+        int breakpointHere = 42;
+    }
+
     #endregion
 }
 

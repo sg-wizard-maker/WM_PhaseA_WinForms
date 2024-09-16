@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace WizardMakerPrototype.Models;
 
@@ -65,6 +66,14 @@ public class AbilityCategory
     public static AbilityCategory RealmLores   = new AbilityCategory("Realm Lores");
     public static AbilityCategory AreaLores    = new AbilityCategory("Area Lores");
     public static AbilityCategory OrgLores     = new AbilityCategory("Org Lores");
+
+    public static AbilityCategory CategoryWithName(string name)
+    {
+        var matching = (from a in AbilityCategory.Categories
+                        where a.Name == name
+                        select a).FirstOrDefault();
+        return matching;
+    }
     #endregion
 
 }

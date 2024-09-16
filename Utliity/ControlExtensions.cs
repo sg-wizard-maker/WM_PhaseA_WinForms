@@ -15,6 +15,32 @@ namespace WizardMakerPrototype;
 public static class ControlExtensions
 {
     /// <summary>
+    /// Finds the topmost Form in the containment hierarchy and returns it.
+    /// </summary>
+    /// <param name="control"></param>
+    /// <returns>The topmost Form</returns>
+    /// <exception cref="Exception"></exception>
+    public static Form FindTopmostForm(Control control)
+    {
+        if (control is null) { return null; }
+        if (control.Parent is null)
+        {
+            Form topmost = control as Form;
+            if (topmost is null)
+            {
+                // One cause of this, was when data setup (which wanted to get TheCharacter from topmost form)
+                // was called within the ctor of a Control.
+                // Moving such data setup to be done AFTER all the ctors were called
+                // (and Controls added into the hierarchy) fixed these occurrences.
+                throw new Exception("ControlExtensions.FindTopmostForm(): Got strange topology, topmost is not a Form");
+            }
+            return topmost;
+        }
+        Control nextToTry = control.Parent;
+        return ControlExtensions.FindTopmostForm(nextToTry);
+    }
+
+    /// <summary>
     /// Given a Control.ControlCollection, return the contents as a List of Control.<br/>
     /// This is useful for LINQ, and similar purposes.
     /// </summary>

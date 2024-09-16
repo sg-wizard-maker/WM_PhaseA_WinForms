@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
+using WizardMakerPrototype.Controls_WinForms;
 using WizardMakerPrototype.Models;
 
 namespace WizardMakerPrototype.Controls;
@@ -32,6 +33,18 @@ public class AbilitiesFlowLayoutPanel : FlowLayoutPanel
         ByAbilityCategory
     };
     public AbilityGroupingsDisplayMode GroupingDisplayMode { get; private set; }
+
+    public Character TheCharacter
+    {
+        get
+        {
+            var parent = ControlExtensions.FindTopmostForm(this);
+            var form   = parent as FormForArM5Character;
+            if (form is null) { throw new Exception("Strange, got topmost Form that was not FormForArM5Character"); }
+            var result = form.TheCharacter;
+            return result;
+        }
+    }
 
     #region Constructors
     public AbilitiesFlowLayoutPanel()
@@ -328,54 +341,27 @@ public class AbilitiesFlowLayoutPanel : FlowLayoutPanel
             var panel = new AbilityLabelAndGridPanel(groupingName);
             abilityGroupingPanelsList.Add(panel);
             this.Controls.Add(panel);
-        }
 
-        Random rand = new Random();
-        string[] randomSpecialties = new string[] 
-        {
-            "---",
-            "daytime",
-            "at night",
-            "when on fire",
-            "routine matters",
-            "dangerous situations",
-            "France and the French",
-        };
-        int numSpecialties = randomSpecialties.Count() - 1;
-
-        // TODO:
-        // Need to add from AbilityArchetypeWildcard.AllAbilityArchetypeWildcards as well as AbilityArchetype.AllCommonAbilities ...
-        // ...Seems to be working thus far, need more testing and some review to deal with a couple of awkward bits around .Name
-
-        List<IAbilityArchetype> combinedList = new List<IAbilityArchetype>();
-        combinedList.AddRange(AbilityArchetype.AllCommonAbilities);
-        combinedList.AddRange(AbilityArchetypeWildcard.AllAbilityArchetypeWildcards);
-        foreach (var arch in combinedList)
-        {
-            int randomXP = Utility.RandomInteger(rand, 0, 150);
-            string randomsSpecialty = randomSpecialties[Utility.RandomInteger(rand, 0, numSpecialties)];
-            bool hasPuissant = Utility.RandomInteger(rand, 0, 7) == 0;  // 1 in 8
-            bool hasAffinity = Utility.RandomInteger(rand, 0, 7) == 0;  // 1 in 8
-            var abilityInstance = new AbilityInstance( arch, randomXP, randomsSpecialty, hasPuissant, hasAffinity);
-
-            // For layout debug purposes:
-            if (arch == AbilityArchetype.AllCommonAbilities.First() )
+            var category = AbilityCategory.CategoryWithName(groupingName);
+            var abilityInstancesInCategory = this.TheCharacter.AbilitiesOfCategory(category);
+            foreach (var abilityInstance in abilityInstancesInCategory)
             {
-                abilityInstance = new AbilityInstance(arch, 9999, "widest specialty name", true, true, 99);
+                bindingListsByAbilityCategory[abilityInstance.Archetype.AbilityCategory.Name].Add(abilityInstance);
             }
-
-            bindingListsByAbilityCategory[abilityInstance.Archetype.AbilityCategory.Name].Add(abilityInstance);
         }
-        int jj = 0;
+
+        int ii = 0;
         foreach (var grouping in AbilityCategory.Categories)
         {
             var bindingList = bindingListsByAbilityCategory[grouping.Name];
-            var theGroupingPanel = abilityGroupingPanelsList[jj];
+            var theGroupingPanel = abilityGroupingPanelsList[ii];
             theGroupingPanel.TheGrid.BindingContext = new BindingContext();  // TODO: Find out why this is needed when AbilitiesFlowLayoutPanel is contained in a TabPage, but not when it is contained in a Form directly...
             theGroupingPanel.TheGrid.DataSource = bindingList;
-            jj++;
+            ii++;
         }
     }
+
+    // TODO: Change DoDataSetupForAbilityTypes() and DoDataSetupForOneGiantList() to use data from this.TheCharacter as well...
 
     /// <summary>
     /// Setup data for N grids in the flowlayoutpanel (N == number of Ability Types), 

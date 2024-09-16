@@ -4,20 +4,25 @@ using System.Windows.Forms;
 using WizardMakerPrototype.Models;
 using WizardMakerPrototype.Controls;
 using WizardMakerPrototype.Controls_WinForms;
+using System;
+using System.Runtime.CompilerServices;
 
 namespace WizardMakerPrototype;
 
 public class FormForArM5Character : Form
 {
-    // Soon, a CharacterTabControl, and this panel moved to there...
     #region Public members
+    public Character TheCharacter { get; private set; }
+
     public AbilitiesFlowLayoutPanel PanelForAbilityGroupings { get; private set; }
     public CharacterTabControl      TheTabControl            { get; private set; }
     #endregion
 
     #region Constructors
-    public FormForArM5Character()
+    public FormForArM5Character(Character character)
     {
+        this.TheCharacter = character;
+
         this.Name = "TEMP MainWindow";
         this.Text = "Wizard Maker - TEMP Main Window";
         //this.Font = new Font("Microsoft Sans Serif", 8.25f);  // This is the default font used, when .Font is not specified
@@ -28,7 +33,6 @@ public class FormForArM5Character : Form
         this.BackColor           = Color.Green;  // Useful for debugging, probably remove later
         //this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 
-        //this.PanelForAbilityGroupings = new AbilitiesFlowLayoutPanel();
         this.TheTabControl = new CharacterTabControl();
         this.TheTabControl.Dock = DockStyle.Fill;
 
@@ -37,7 +41,7 @@ public class FormForArM5Character : Form
         this.SuspendLayout();
 
         // TODO:
-        // Why is resizing the Form MUCH slower when using TabControl, rather than PanelForAbilityGroupings ?
+        // Why is resizing the Form MUCH slower when using TabControl, rather than PanelForAbilityGroupings (a AbilitiesFlowLayoutPanel used directly) ?
         // - Found that SuspendLayout()/ResumeLayout() did not affect performance -- may be useful only "when adding several controls"
         // - Found that setting ControlStyles.OptimizedDoubleBuffer improved performance considerably, for (AbilityGrid, AbilityLabelAndGridPanel, CharacterTabControl)
         //   but not for (AbilitiesFlowLayoutPanel, AbilitiesTabPage)
@@ -48,6 +52,12 @@ public class FormForArM5Character : Form
         this.PerformLayout();
         #endregion
 
+        #region DEBUG for Character data setup
+        this.TheCharacter.DEBUG_DataSetupOfAbilityInstances();
+
+        this.TheTabControl.DoDataSetup();
+        #endregion
+
         #region DEBUG variables for inspection via breakpoint
         var debugSaga                      = Saga.CurrentSaga;
         var debugWildCardGroups            = AbilityWildcardGroup.AllAbilityWildcardGroups;
@@ -56,5 +66,6 @@ public class FormForArM5Character : Form
         #endregion
     }
     #endregion
+
 
 } // class

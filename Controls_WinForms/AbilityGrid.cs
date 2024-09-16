@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -6,11 +7,20 @@ using WizardMakerPrototype.Models;
 
 namespace WizardMakerPrototype.Controls;
 
-// TODO:
-// Investigate using a TableLayoutPanel, that contains a Label and a DataGridView
-// This would allow some kind of label header for each grid...
 public class AbilityGrid : DataGridView
 {
+    //public Character TheCharacter
+    //{
+    //    get
+    //    {
+    //        var parent = ControlExtensions.FindTopmostForm(this);
+    //        var form   = parent as FormForArM5Character;
+    //        if (form is null) { throw new Exception("Strange, got topmost Form that was not FormForArM5Character"); }
+    //        var result = form.TheCharacter;
+    //        return result;
+    //    }
+    //}
+
     #region Constructors
     public AbilityGrid()
     {

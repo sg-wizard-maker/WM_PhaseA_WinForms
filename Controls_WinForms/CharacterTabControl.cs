@@ -14,9 +14,21 @@ namespace WizardMakerPrototype.Controls_WinForms;
 public class CharacterTabControl : TabControl
 {
     #region Public members
-    public TabPage TheAbilitiesPage       { get; private set; }
-    public TabPage TheControlsTestbedPage { get; private set; }
-    public TabPage TheYetAnotherPage      { get; private set; }
+    public Character TheCharacter
+    {
+        get
+        {
+            var parent = ControlExtensions.FindTopmostForm(this);
+            var form   = parent as FormForArM5Character;
+            if (form is null) { throw new Exception("Strange, got topmost Form that was not FormForArM5Character"); }
+            var result = form.TheCharacter;
+            return result;
+        }
+    }
+
+    public AbilitiesTabPage TheAbilitiesPage       { get; private set; }
+    public TabPage          TheControlsTestbedPage { get; private set; }
+    public TabPage          TheYetAnotherPage      { get; private set; }
     #endregion
 
     #region Constructors
@@ -41,9 +53,17 @@ public class CharacterTabControl : TabControl
         this.Controls.Add(TheControlsTestbedPage);
         this.Controls.Add(TheYetAnotherPage);
 
+
         //this.ResumeLayout( false );
         //this.PerformLayout();
         //#endregion
+    }
+    #endregion
+
+    #region Public methods for Data Setup
+    public void DoDataSetup()
+    {
+        this.TheAbilitiesPage.DoDataSetup();
     }
     #endregion
 

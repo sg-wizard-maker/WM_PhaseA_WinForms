@@ -6,12 +6,25 @@ using System.Windows.Forms;
 
 using WizardMakerPrototype.Models;
 using System.Threading;
+using WizardMakerPrototype.Controls_WinForms;
 
 namespace WizardMakerPrototype.Controls;
 
 public class AbilitiesTabPage : TabPage
 {
     #region Public members
+    public Character TheCharacter
+    {
+        get
+        {
+            var parent = ControlExtensions.FindTopmostForm(this);
+            var form   = parent as FormForArM5Character;
+            if (form is null) { throw new Exception("Strange, got topmost Form that was not FormForArM5Character"); }
+            var result = form.TheCharacter;
+            return result;
+        }
+    }
+
     public SplitContainer           TheSplitContainer   { get; private set; }
     //public SplitterPanel            SplitPanel1         { get; private set; }
     //public SplitterPanel            SplitPanel2         { get; private set; }
@@ -143,21 +156,22 @@ public class AbilitiesTabPage : TabPage
         // - Found that setting ControlStyles.OptimizedDoubleBuffer improved performance considerably,
         //           for (AbilityGrid, AbilityLabelAndGridPanel, CharacterTabControl)
         //   but NOT for (AbilitiesFlowLayoutPanel, AbilitiesTabPage)
+    }
+    #endregion
 
-        #region Setup various things in the AbilityGridControls
+    #region Public Methods
+    public void DoDataSetup()
+    {
         // Note: Call exactly ONE of the .DoDataSetupForAbilityXXX() methods, calling additional will add duplicate Abilities data.
         this.TheFlowLayoutPanel.DoDataSetupForAbilityCategories();
         //this.TheFlowLayoutPanel.DoDataSetupForAbilityTypes();
         //this.TheFlowLayoutPanel.DoDataSetupForOneGiantList();
         //// TODO: Maybe add another kind, "ByAbilityTypeButWithGeneralSplitUp" ...
-        
+
         var dataGridsInThisPanel = ControlExtensions.DataGridsInAbilitiesFlowLayoutPanel(this.TheFlowLayoutPanel);
         
         this.TheFlowLayoutPanel.DoColumnsSetup(dataGridsInThisPanel);
         this.TheFlowLayoutPanel.AdjustEachContainedGridToIndividualNeededHeight(dataGridsInThisPanel);
-        #endregion
-
-        
     }
     #endregion
 
