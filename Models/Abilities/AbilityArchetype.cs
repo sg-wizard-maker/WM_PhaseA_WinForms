@@ -60,20 +60,12 @@ public class AbilityArchetype : IAbilityArchetype, IOrdinaryArchetypeOrWildcardG
         AllCommonAbilities.AddRange( new List<AbilityArchetype>() { Brawl, SingleWeapon, GreatWeapon, Bows, Thrown } );
         AllCommonAbilities.AddRange( new List<AbilityArchetype>() { AnimalHandling, Athletics, Awareness, Hunt, Legerdemain, Ride, Stealth, Survival, Swim } );
         AllCommonAbilities.AddRange( new List<AbilityArchetype>() { Bargain, Carouse, Charm, Etiquette, FolkKen, Guile, Intrigue, Music, Leadership, Teaching } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { LangEnglish, LangHighGerman, LangItalian, LangKoineGreek, LangArabic } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { LangLatin, LangAncientGreek, LangHebrew, LangGothic } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { CraftTanner, CraftLeatherworker, CraftCarpenter, CraftWoodcarver, CraftBlacksmith, CraftJeweler, CraftWhitesmith } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { ProfScribe, ProfApothecary, ProfJongleur, ProfReeve, ProfSailor, ProfSteward, ProfTeamster, ProfWasherwoman } );
         AllCommonAbilities.AddRange( new List<AbilityArchetype>() { ArtesLiberales, ArtOfMemory, Chirurgy, Medicine, Philosophiae } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { LawCodeOfHermes, LawCivilAndCanon, LawIslamic } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { TheologyChristian, TheologyJudaic, TheologyIslamic, TheologyPagan } );
         AllCommonAbilities.AddRange( new List<AbilityArchetype>() { AnimalKen, Dowsing, EnchantingMusic, Entrancement, MagicSensitivity, Premonitions, SecondSight, SenseHolyUnholy, Shapeshifter, WildernessSense } );
         AllCommonAbilities.AddRange( new List<AbilityArchetype>() { TheEnigma, HeartBeast, FaerieMagic } );
         AllCommonAbilities.AddRange( new List<AbilityArchetype>() { HermeticMagicTheory, FolkWitchMagicTheory, ParmaMagica, Certamen, Concentration, Finesse, Penetration, Recuperation, Withstanding } );
         AllCommonAbilities.AddRange( new List<AbilityArchetype>() { MagicLore, FaerieLore, DominionLore, InfernalLore } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { AreaLoreVeryBasic, AreaLoreSomeCountry, AreaLoreSomeTribunal, AreaLoreSomeCovenant } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { OrgLoreChurch, OrgLoreOrderOfHermes, OrgLoreVeryBasic, OrgLoreSomeKnightOrder, OrgLoreSomeNobleCourt, OrgLoreSomeCraftGuild } );
-        AllCommonAbilities.AddRange( new List<AbilityArchetype>() { MartialSecret, PhysicalSecret, SocialSecret, LangSecret, CraftSecret, ProfSecret, AcadSecret, OrgLoreSecret, AreaLoreSecret } );
+        //AllCommonAbilities.AddRange( new List<AbilityArchetype>() { MartialSecret, PhysicalSecret, SocialSecret, LangSecret, CraftSecret, ProfSecret, AcadSecret, OrgLoreSecret, AreaLoreSecret } );
     }
     #endregion
 
@@ -156,42 +148,12 @@ public class AbilityArchetype : IAbilityArchetype, IOrdinaryArchetypeOrWildcardG
     public static AbilityArchetype Leadership     = new AbilityArchetype(AbilityCategory.Social, AbilityType.General,  "Leadership", emptyListOfSpecialties );
     public static AbilityArchetype Teaching       = new AbilityArchetype(AbilityCategory.Social, AbilityType.General,  "Teaching",   emptyListOfSpecialties );
 
-    // Category: Languages - Living Languages (General)
-    public static AbilityArchetype LangEnglish    = new AbilityArchetype(AbilityCategory.Languages, AbilityType.General, "Lang: English OLD",     emptyListOfSpecialties );
-    public static AbilityArchetype LangHighGerman = new AbilityArchetype(AbilityCategory.Languages, AbilityType.General, "Lang: High German OLD", emptyListOfSpecialties );
-    public static AbilityArchetype LangItalian    = new AbilityArchetype(AbilityCategory.Languages, AbilityType.General, "Lang: Italian",         emptyListOfSpecialties );
-    public static AbilityArchetype LangKoineGreek = new AbilityArchetype(AbilityCategory.Languages, AbilityType.General, "Lang: Koine Greek",     emptyListOfSpecialties );
-    public static AbilityArchetype LangArabic     = new AbilityArchetype(AbilityCategory.Languages, AbilityType.General, "Lang: Arabic",          emptyListOfSpecialties );
-    // ...
-
-    // Category: Languages - Dead Languages (Academic)
-    public static AbilityArchetype LangLatin        = new AbilityArchetype(AbilityCategory.Languages, AbilityType.Academic, "Dead: Latin OLD",         emptyListOfSpecialties, NO_UNSKILLED );
-    public static AbilityArchetype LangAncientGreek = new AbilityArchetype(AbilityCategory.Languages, AbilityType.Academic, "Dead: Ancient Greek OLD", emptyListOfSpecialties, NO_UNSKILLED );
-    public static AbilityArchetype LangHebrew       = new AbilityArchetype(AbilityCategory.Languages, AbilityType.Academic, "Dead: Hebrew",            emptyListOfSpecialties, NO_UNSKILLED );
-    public static AbilityArchetype LangGothic       = new AbilityArchetype(AbilityCategory.Languages, AbilityType.Academic, "Dead: Gothic",            emptyListOfSpecialties, NO_UNSKILLED );
-    // ...
-
-    // Category: Crafts
-    public static AbilityArchetype CraftTanner        = new AbilityArchetype(AbilityCategory.Crafts, AbilityType.General,  "Craft: Tanner",        emptyListOfSpecialties );
-    public static AbilityArchetype CraftLeatherworker = new AbilityArchetype(AbilityCategory.Crafts, AbilityType.General,  "Craft: Leatherworker", emptyListOfSpecialties );
-    public static AbilityArchetype CraftCarpenter     = new AbilityArchetype(AbilityCategory.Crafts, AbilityType.General,  "Craft: Carpenter OLD", emptyListOfSpecialties );
-    public static AbilityArchetype CraftWoodcarver    = new AbilityArchetype(AbilityCategory.Crafts, AbilityType.General,  "Craft: Woodcarver",    emptyListOfSpecialties );
-    public static AbilityArchetype CraftBlacksmith    = new AbilityArchetype(AbilityCategory.Crafts, AbilityType.General,  "Craft: Blacksmith OLD",emptyListOfSpecialties );
-    public static AbilityArchetype CraftJeweler       = new AbilityArchetype(AbilityCategory.Crafts, AbilityType.General,  "Craft: Jeweler",       emptyListOfSpecialties );
-    public static AbilityArchetype CraftWhitesmith    = new AbilityArchetype(AbilityCategory.Crafts, AbilityType.General,  "Craft: Whitesmith",    emptyListOfSpecialties );
-    // ...
-
-    // Category: Professions
-    public static AbilityArchetype ProfScribe      = new AbilityArchetype(AbilityCategory.Professions, AbilityType.General,  "Prof: Scribe OLD",      emptyListOfSpecialties );
-    public static AbilityArchetype ProfApothecary  = new AbilityArchetype(AbilityCategory.Professions, AbilityType.General,  "Prof: Apothecary OLD",  emptyListOfSpecialties );
-    // ...
-    public static AbilityArchetype ProfJongleur    = new AbilityArchetype(AbilityCategory.Professions, AbilityType.General,  "Prof: Jongleur",    emptyListOfSpecialties );
-    public static AbilityArchetype ProfReeve       = new AbilityArchetype(AbilityCategory.Professions, AbilityType.General,  "Prof: Reeve",       emptyListOfSpecialties );
-    public static AbilityArchetype ProfSailor      = new AbilityArchetype(AbilityCategory.Professions, AbilityType.General,  "Prof: Sailor",      emptyListOfSpecialties );
-    public static AbilityArchetype ProfSteward     = new AbilityArchetype(AbilityCategory.Professions, AbilityType.General,  "Prof: Steward",     emptyListOfSpecialties );
-    public static AbilityArchetype ProfTeamster    = new AbilityArchetype(AbilityCategory.Professions, AbilityType.General,  "Prof: Teamster",    emptyListOfSpecialties );
-    public static AbilityArchetype ProfWasherwoman = new AbilityArchetype(AbilityCategory.Professions, AbilityType.General,  "Prof: Washerwoman", emptyListOfSpecialties );
-    // ...
+    // Category: Languages - Living Languages (General) -- These are now in AbilityArchetypeWildcard
+    // Category: Languages - Dead Languages (Academic)  -- These are now in AbilityArchetypeWildcard
+    // Category: Crafts                                 -- These are now in AbilityArchetypeWildcard
+    // Category: Professions                            -- These are now in AbilityArchetypeWildcard
+    // Category: Area Lores                             -- These are now in AbilityArchetypeWildcard
+    // Category: Organization Lores                     -- These are now in AbilityArchetypeWildcard
 
     // Category: Academic
     public static AbilityArchetype ArtesLiberales    = new AbilityArchetype(AbilityCategory.Academic, AbilityType.Academic,  "Artes Liberales", emptyListOfSpecialties, NO_UNSKILLED );
@@ -199,16 +161,8 @@ public class AbilityArchetype : IAbilityArchetype, IOrdinaryArchetypeOrWildcardG
     public static AbilityArchetype Chirurgy          = new AbilityArchetype(AbilityCategory.Academic, AbilityType.General,   "Chirurgy",        emptyListOfSpecialties, NO_UNSKILLED );
     public static AbilityArchetype Medicine          = new AbilityArchetype(AbilityCategory.Academic, AbilityType.Academic,  "Medicine",        emptyListOfSpecialties, NO_UNSKILLED );
     public static AbilityArchetype Philosophiae      = new AbilityArchetype(AbilityCategory.Academic, AbilityType.Academic,  "Philosophiae",    emptyListOfSpecialties, NO_UNSKILLED );
-    // ...
-    public static AbilityArchetype LawCodeOfHermes   = new AbilityArchetype(AbilityCategory.Academic, AbilityType.Academic,  "Law: Code of Hermes OLD", emptyListOfSpecialties, NO_UNSKILLED );
-    public static AbilityArchetype LawCivilAndCanon  = new AbilityArchetype(AbilityCategory.Academic, AbilityType.Academic,  "Law: Civil & Canon OLD",  emptyListOfSpecialties, NO_UNSKILLED );
-    public static AbilityArchetype LawIslamic        = new AbilityArchetype(AbilityCategory.Academic, AbilityType.Academic,  "Law: Islamic",            emptyListOfSpecialties, NO_UNSKILLED );
-    // ...
-    public static AbilityArchetype TheologyChristian = new AbilityArchetype(AbilityCategory.Academic, AbilityType.Academic,  "Theology: Christian OLD", emptyListOfSpecialties, NO_UNSKILLED );
-    public static AbilityArchetype TheologyJudaic    = new AbilityArchetype(AbilityCategory.Academic, AbilityType.Academic,  "Theology: Judaic OLD",    emptyListOfSpecialties, NO_UNSKILLED );
-    public static AbilityArchetype TheologyIslamic   = new AbilityArchetype(AbilityCategory.Academic, AbilityType.Academic,  "Theology: Islamic",       emptyListOfSpecialties, NO_UNSKILLED );
-    public static AbilityArchetype TheologyPagan     = new AbilityArchetype(AbilityCategory.Academic, AbilityType.Academic,  "Theology: Pagan",         emptyListOfSpecialties, NO_UNSKILLED );
-    // ...
+    // ...Law      now in AbilityArchetypeWildcard
+    // ...Theology now in AbilityArchetypeWildcard
 
     // Category: Supernatural
     public static AbilityArchetype AnimalKen        = new AbilityArchetype(AbilityCategory.Supernatural, AbilityType.Supernatural,  "Animal Ken",        emptyListOfSpecialties, NO_UNSKILLED );
@@ -243,35 +197,17 @@ public class AbilityArchetype : IAbilityArchetype, IOrdinaryArchetypeOrWildcardG
     public static AbilityArchetype DominionLore    = new AbilityArchetype(AbilityCategory.RealmLores, AbilityType.Arcane,  "Dominion Lore", emptyListOfSpecialties, NO_UNSKILLED );
     public static AbilityArchetype InfernalLore    = new AbilityArchetype(AbilityCategory.RealmLores, AbilityType.Arcane,  "Infernal Lore", emptyListOfSpecialties, NO_UNSKILLED );
 
-    // Category: Area Lores
-    public static AbilityArchetype AreaLoreVeryBasic     = new AbilityArchetype(AbilityCategory.AreaLores, AbilityType.General, "Area Lore: VeryBasic",     emptyListOfSpecialties );
-    public static AbilityArchetype AreaLoreSomeCountry   = new AbilityArchetype(AbilityCategory.AreaLores, AbilityType.General, "Area Lore: SomeCountry",   emptyListOfSpecialties, NO_UNSKILLED );
-    public static AbilityArchetype AreaLoreSomeTribunal  = new AbilityArchetype(AbilityCategory.AreaLores, AbilityType.General, "Area Lore: SomeTribunal",  emptyListOfSpecialties, NO_UNSKILLED );
-    // ...
-    public static AbilityArchetype AreaLoreSomeCovenant  = new AbilityArchetype(AbilityCategory.AreaLores, AbilityType.Arcane,  "Area Lore: SomeCovenant",  emptyListOfSpecialties, NO_UNSKILLED );
-    // ...
-
     // Category: Secret Abilities
-    public static AbilityArchetype MartialSecret         = new AbilityArchetype(AbilityCategory.Martial,     AbilityType.Secret,  "Secret Martial",         emptyListOfSpecialties, NO_UNSKILLED );
-    public static AbilityArchetype PhysicalSecret        = new AbilityArchetype(AbilityCategory.Physical,    AbilityType.Secret,  "Secret Physical",        emptyListOfSpecialties, NO_UNSKILLED );
-    public static AbilityArchetype SocialSecret          = new AbilityArchetype(AbilityCategory.Social,      AbilityType.Secret,  "Secret Social",          emptyListOfSpecialties, NO_UNSKILLED );
-    public static AbilityArchetype LangSecret            = new AbilityArchetype(AbilityCategory.Languages,   AbilityType.Secret,  "Lang: Secret",           emptyListOfSpecialties, NO_UNSKILLED );
-    public static AbilityArchetype CraftSecret           = new AbilityArchetype(AbilityCategory.Crafts,      AbilityType.Secret,  "Craft: Secret",          emptyListOfSpecialties, NO_UNSKILLED );
-    public static AbilityArchetype ProfSecret            = new AbilityArchetype(AbilityCategory.Professions, AbilityType.Secret,  "Prof: Secret",           emptyListOfSpecialties, NO_UNSKILLED );
-    public static AbilityArchetype AcadSecret            = new AbilityArchetype(AbilityCategory.Academic,    AbilityType.Secret,  "Secret Academic",        emptyListOfSpecialties, NO_UNSKILLED );
-    public static AbilityArchetype AreaLoreSecret        = new AbilityArchetype(AbilityCategory.AreaLores,   AbilityType.Secret,  "Area Lore: Secret Area", emptyListOfSpecialties, NO_UNSKILLED );
-    public static AbilityArchetype OrgLoreSecret         = new AbilityArchetype(AbilityCategory.OrgLores,    AbilityType.Secret,  "Org Lore: Secret Org",   emptyListOfSpecialties, NO_UNSKILLED );
-    // ...
+    //public static AbilityArchetype MartialSecret         = new AbilityArchetype(AbilityCategory.Martial,     AbilityType.Secret,  "Secret Martial",         emptyListOfSpecialties, NO_UNSKILLED );
+    //public static AbilityArchetype PhysicalSecret        = new AbilityArchetype(AbilityCategory.Physical,    AbilityType.Secret,  "Secret Physical",        emptyListOfSpecialties, NO_UNSKILLED );
+    //public static AbilityArchetype SocialSecret          = new AbilityArchetype(AbilityCategory.Social,      AbilityType.Secret,  "Secret Social",          emptyListOfSpecialties, NO_UNSKILLED );
+    //public static AbilityArchetype LangSecret            = new AbilityArchetype(AbilityCategory.Languages,   AbilityType.Secret,  "Lang: Secret",           emptyListOfSpecialties, NO_UNSKILLED );
+    //public static AbilityArchetype CraftSecret           = new AbilityArchetype(AbilityCategory.Crafts,      AbilityType.Secret,  "Craft: Secret",          emptyListOfSpecialties, NO_UNSKILLED );
+    //public static AbilityArchetype ProfSecret            = new AbilityArchetype(AbilityCategory.Professions, AbilityType.Secret,  "Prof: Secret",           emptyListOfSpecialties, NO_UNSKILLED );
+    //public static AbilityArchetype AcadSecret            = new AbilityArchetype(AbilityCategory.Academic,    AbilityType.Secret,  "Secret Academic",        emptyListOfSpecialties, NO_UNSKILLED );
+    //public static AbilityArchetype AreaLoreSecret        = new AbilityArchetype(AbilityCategory.AreaLores,   AbilityType.Secret,  "Area Lore: Secret Area", emptyListOfSpecialties, NO_UNSKILLED );
+    //public static AbilityArchetype OrgLoreSecret         = new AbilityArchetype(AbilityCategory.OrgLores,    AbilityType.Secret,  "Org Lore: Secret Org",   emptyListOfSpecialties, NO_UNSKILLED );
 
-    // Category: Organization Lores
-    public static AbilityArchetype OrgLoreChurch          = new AbilityArchetype(AbilityCategory.OrgLores, AbilityType.General, "Org Lore: The Church OLD",      emptyListOfSpecialties, NO_UNSKILLED );
-    public static AbilityArchetype OrgLoreOrderOfHermes   = new AbilityArchetype(AbilityCategory.OrgLores, AbilityType.Arcane,  "Org Lore: Order of Hermes OLD", emptyListOfSpecialties, NO_UNSKILLED );
-    // ...
-    public static AbilityArchetype OrgLoreVeryBasic       = new AbilityArchetype(AbilityCategory.OrgLores, AbilityType.General, "Org Lore: VeryBasic",       emptyListOfSpecialties );
-    public static AbilityArchetype OrgLoreSomeKnightOrder = new AbilityArchetype(AbilityCategory.OrgLores, AbilityType.General, "Org Lore: SomeKnightOrder", emptyListOfSpecialties, NO_UNSKILLED );
-    public static AbilityArchetype OrgLoreSomeNobleCourt  = new AbilityArchetype(AbilityCategory.OrgLores, AbilityType.General, "Org Lore: SomeNobleCourt",  emptyListOfSpecialties, NO_UNSKILLED );
-    public static AbilityArchetype OrgLoreSomeCraftGuild  = new AbilityArchetype(AbilityCategory.OrgLores, AbilityType.General, "Org Lore: SomeCraftGuild",  emptyListOfSpecialties, NO_UNSKILLED );
-    // ...
     #endregion
 
 }
