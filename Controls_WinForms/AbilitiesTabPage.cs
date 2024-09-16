@@ -26,8 +26,6 @@ public class AbilitiesTabPage : TabPage
     }
 
     public SplitContainer           TheSplitContainer   { get; private set; }
-    //public SplitterPanel            SplitPanel1         { get; private set; }
-    //public SplitterPanel            SplitPanel2         { get; private set; }
 
     public Label LabelAbilityType          { get; private set; }
     public Label LabelAbilityCategory      { get; private set; }
@@ -42,10 +40,6 @@ public class AbilitiesTabPage : TabPage
     public ComboBox Combo5 { get; private set; }
     //public ComboBox Combo6 { get; private set; }
     //public ComboBox Combo7 { get; private set; }
-
-    public Label                    PlaceHolderLabel1   { get; private set; }
-    public Label                    PlaceHolderLabel2   { get; private set; }
-    public Label                    PlaceHolderLabel3   { get; private set; }
 
     public AbilitiesFlowLayoutPanel TheFlowLayoutPanel  { get; private set; }
     // Hmmm... Putting FlowLayoutPanel inside TableLayoutPanel did not work well (only one column in FlowLayoutPanel).
@@ -66,8 +60,6 @@ public class AbilitiesTabPage : TabPage
             BorderStyle      = BorderStyle.FixedSingle,
             FixedPanel       = FixedPanel.Panel1,
         };
-        //this.SplitPanel1 = new SplitterPanel(this.TheSplitContainer);
-        //this.SplitPanel2 = new SplitterPanel(this.TheSplitContainer);
 
         this.LabelAbilityType          = new Label() { Text = "Ability Type: ",     Width=85, Location = new Point(0,  25) };
         this.LabelAbilityCategory      = new Label() { Text = "Ability Category: ", Width=85, Location = new Point(0,  50) };
@@ -111,9 +103,6 @@ public class AbilitiesTabPage : TabPage
             DisplayMember = "Name",
         };
 
-        //this.PlaceHolderLabel1   = new Label() { Text = "Placeholder: Characteristics 1", Width = 1024, BackColor = Color.Coral };
-        //this.PlaceHolderLabel2   = new Label() { Text = "Placeholder: Characteristics 2", Width = 1024, BackColor = Color.Coral, Location = new Point(0, 24) };
-        //this.PlaceHolderLabel3   = new Label() { Text = "Placeholder: Characteristics 3", Width = 1024, BackColor = Color.Coral, Location = new Point(0, 48) };
         this.TheFlowLayoutPanel = new AbilitiesFlowLayoutPanel() 
         {
             AutoSize     = true, 
@@ -122,9 +111,6 @@ public class AbilitiesTabPage : TabPage
 
 
 
-        //this.TheSplitContainer.Panel1.Controls.Add(this.PlaceHolderLabel1);
-        //this.TheSplitContainer.Panel1.Controls.Add(this.PlaceHolderLabel2);
-        //this.TheSplitContainer.Panel1.Controls.Add(this.PlaceHolderLabel3);
 
         this.TheSplitContainer.Panel1.Controls.Add(this.LabelAbilityType);
         this.TheSplitContainer.Panel1.Controls.Add(this.LabelAbilityCategory);
@@ -141,9 +127,6 @@ public class AbilitiesTabPage : TabPage
         this.TheSplitContainer.Panel2.Controls.Add(this.TheFlowLayoutPanel);
 
         this.Controls.Add(this.TheSplitContainer);
-        //this.Controls.Add(this.TheFlowLayoutPanel);
-
-
 
         // TODO:
         // Why is resizing the Form MUCH slower when
@@ -163,10 +146,9 @@ public class AbilitiesTabPage : TabPage
     public void DoDataSetup()
     {
         // Note: Call exactly ONE of the .DoDataSetupForAbilityXXX() methods, calling additional will add duplicate Abilities data.
-        //this.TheFlowLayoutPanel.DoDataSetupForAbilityCategories();
-        this.TheFlowLayoutPanel.DoDataSetupForAbilityTypes();
-        //this.TheFlowLayoutPanel.DoDataSetupForOneGiantList();
-        //// TODO: Maybe add another kind, "ByAbilityTypeButWithGeneralSplitUp" ...
+        this.TheFlowLayoutPanel.DoDataSetupForAbilityCategories();
+        //this.TheFlowLayoutPanel.DoDataSetupForAbilityTypes();
+        //this.TheFlowLayoutPanel.DoDataSetupForOneGiantListSplitIntoColumns();
 
         var dataGridsInThisPanel = ControlExtensions.DataGridsInAbilitiesFlowLayoutPanel(this.TheFlowLayoutPanel);
         

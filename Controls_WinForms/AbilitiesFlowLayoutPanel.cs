@@ -410,7 +410,7 @@ public class AbilitiesFlowLayoutPanel : FlowLayoutPanel
 
     // TODO: Change DoDataSetupForOneGiantList() to use data from this.TheCharacter as well...
 
-    public void DoDataSetupForOneGiantList()
+    public void DoDataSetupForOneGiantListSplitIntoColumns()
     {
         // TODO: 
         // Consider what is needed, for this mode to 
