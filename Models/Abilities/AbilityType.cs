@@ -60,6 +60,14 @@ public class AbilityType
     public static AbilityType Arcane       = new AbilityType("Arc",  "Arcane"        );
     public static AbilityType Supernatural = new AbilityType("Sup",  "Supernatural"  );
     public static AbilityType Secret       = new AbilityType("Sec",  "Secret"        );  // Not specified in (ArM5 core), but useful for Saga-specific Abilities which are private to certain groups, and the like
+
+    public static AbilityType AbilityTypeWithName(string name)
+    {
+        var matching = (from a in AbilityType.Types
+                        where a.Name == name
+                        select a).FirstOrDefault();
+        return matching;
+    }
     #endregion
 
 }

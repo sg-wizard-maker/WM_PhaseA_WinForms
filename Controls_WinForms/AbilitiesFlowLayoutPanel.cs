@@ -361,8 +361,6 @@ public class AbilitiesFlowLayoutPanel : FlowLayoutPanel
         }
     }
 
-    // TODO: Change DoDataSetupForAbilityTypes() and DoDataSetupForOneGiantList() to use data from this.TheCharacter as well...
-
     /// <summary>
     /// Setup data for N grids in the flowlayoutpanel (N == number of Ability Types), 
     /// with Abilities of one AbilityType per grid.<br/>
@@ -390,47 +388,27 @@ public class AbilitiesFlowLayoutPanel : FlowLayoutPanel
             var panel = new AbilityLabelAndGridPanel(groupingName);
             abilityGroupingPanelsList.Add(panel);
             this.Controls.Add(panel);
-        }
 
-        Random rand = new Random();
-        string[] randomSpecialties = new string[] 
-        {
-            "---",
-            "daytime",
-            "at night",
-            "when on fire",
-            "routine matters",
-            "dangerous situations",
-            "France and the French",
-        };
-        int numSpecialties = randomSpecialties.Count() - 1;
-
-        foreach (var arch in AbilityArchetype.AllCommonAbilities)
-        {
-            int randomXP = Utility.RandomInteger(rand, 0, 150);
-            string randomsSpecialty = randomSpecialties[Utility.RandomInteger(rand, 0, numSpecialties)];
-            bool hasPuissant = Utility.RandomInteger(rand, 0, 7) == 0;  // 1 in 8
-            bool hasAffinity = Utility.RandomInteger(rand, 0, 7) == 0;  // 1 in 8
-            var abilityInstance = new AbilityInstance( arch, randomXP, randomsSpecialty, hasPuissant, hasAffinity);
-
-            // For layout debug purposes:
-            if (arch == AbilityArchetype.AllCommonAbilities.First() )
+            var type = AbilityType.AbilityTypeWithName(groupingName);
+            var abilityInstancesOfType = this.TheCharacter.AbilitiesOfType(type);
+            foreach (var abilityInstance in abilityInstancesOfType)
             {
-                abilityInstance = new AbilityInstance(arch, 9999, "widest specialty name", true, true, 99);
+                bindingListsByAbilityType[abilityInstance.Archetype.AbilityType.Name].Add(abilityInstance);
             }
-
-            bindingListsByAbilityType[abilityInstance.Archetype.AbilityType.Name].Add(abilityInstance);
         }
-        int jj = 0;
+
+        int ii = 0;
         foreach (var grouping in AbilityType.Types)
         {
             var bindingList = bindingListsByAbilityType[grouping.Name];
-            var theGroupingPanel = abilityGroupingPanelsList[jj];
+            var theGroupingPanel = abilityGroupingPanelsList[ii];
             theGroupingPanel.TheGrid.BindingContext = new BindingContext();  // TODO: Find out why this is needed when AbilitiesFlowLayoutPanel is contained in a TabPage, but not when it is contained in a Form directly...
             theGroupingPanel.TheGrid.DataSource = bindingList;
-            jj++;
+            ii++;
         }
     }
+
+    // TODO: Change DoDataSetupForOneGiantList() to use data from this.TheCharacter as well...
 
     public void DoDataSetupForOneGiantList()
     {
