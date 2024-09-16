@@ -120,7 +120,6 @@
     <Compile Include="Controls_WinForms\CharacteristicsGridControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Models\ExtremelyPrimitiveAbilityModel.cs" />
     <Compile Include="Models\SingleJournalEntry.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
