@@ -65,9 +65,7 @@ public class AbilityGrid : DataGridView
         this.Margin = Padding.Empty;  // When in AbilityGroupingPanel, we want zero Margin
         this.Dock   = DockStyle.None;  // When inside AbilitiesFlowLayoutPanel, DockStyle.None is desirable
 
-        //this.CellClick += OnGridRowClick;
-        this.CellMouseDown += OnCellMouseDown;
-        //this.CellMouseClick += 
+        this.CellMouseDown += OnCellMouseDown;  // Note: Currently, this interferes with column resizing, which was set up in AbilitiesFlowLayoutPanel.DoColumnsSetup()
     }
     #endregion
 
