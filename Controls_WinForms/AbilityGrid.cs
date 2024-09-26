@@ -92,7 +92,7 @@ public class AbilityGrid : DataGridView
         if (cmea.ColumnIndex >= 0 && cmea.RowIndex >= 0)
         {
             clickedCell = this[cmea.ColumnIndex, cmea.RowIndex];
-            nameCell    = this[2, cmea.RowIndex];
+            nameCell    = this[2, cmea.RowIndex];  // WART: 2 is a magic number, const AbilitiesFlowLayoutPanel.COL_AbilityName
         }
         string cellText    = clickedCell?.Value as string;
         string rowName     = nameCell?.Value    as string;
