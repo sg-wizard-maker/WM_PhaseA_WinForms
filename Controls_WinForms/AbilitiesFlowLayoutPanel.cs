@@ -79,6 +79,48 @@ public class AbilitiesFlowLayoutPanel : FlowLayoutPanel
     }
     #endregion
 
+    #region Methods to get Column names and such
+    public static string ColumnNameForIndex(int index)
+    {
+        string str;
+        switch (index)
+        {
+            // TODO: Would be nice to get this from a single source, perhaps via Reflection...
+            case AbilitiesFlowLayoutPanel.COL_AbilityCategory:
+                str = "Category";
+                break;
+            case AbilitiesFlowLayoutPanel.COL_AbilityType:
+                str = "Type";
+                break;
+            case AbilitiesFlowLayoutPanel.COL_AbilityName:
+                str = "Name";
+                break;
+            case AbilitiesFlowLayoutPanel.COL_XP:
+                str = "XP";
+                break;
+            case AbilitiesFlowLayoutPanel.COL_Score:
+                str = "Score";
+                break;
+            case AbilitiesFlowLayoutPanel.COL_Bonus:
+                str = "Bonus";
+                break;
+            case AbilitiesFlowLayoutPanel.COL_Specialty:
+                str = "Specialty";
+                break;
+            case AbilitiesFlowLayoutPanel.COL_HasAffinity:
+                str = "Has Affinity";
+                break;
+            case AbilitiesFlowLayoutPanel.COL_HasPuissant:
+                str = "Has Puissance";
+                break;
+            default:
+                str = "";
+                break;
+        }
+        return str;
+    }
+    #endregion
+
     /// <summary>
     /// Sanity checks that all of the contained DataGridView controls 
     /// have the same number of columns.

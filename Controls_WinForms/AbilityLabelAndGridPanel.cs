@@ -40,6 +40,7 @@ public class AbilityLabelAndGridPanel : TableLayoutPanel
         var size = TextRenderer.MeasureText(labelText, this.TheLabel.Font);
         this.TheLabel.Width  = size.Width;
         this.TheLabel.Height = size.Height;
+        this.TheLabel.MouseClick += OnLabelClick;
 
         this.TheGrid = new AbilityGrid();
 
@@ -47,5 +48,39 @@ public class AbilityLabelAndGridPanel : TableLayoutPanel
         this.Controls.Add(this.TheGrid);
     }
     #endregion
+
+    public void OnLabelClick(object sender, MouseEventArgs e)
+    {
+        Label theLabel = sender as Label;
+        string whichButton;
+        string labelText = theLabel?.Text;
+        string msg;
+        switch (e.Button)
+        {
+            case MouseButtons.Left:
+                whichButton = "Left";
+                break;
+
+            case MouseButtons.Middle:
+                whichButton = "Middle";
+                break;
+
+            case MouseButtons.Right:
+                whichButton = "Right";
+                break;
+
+            default:
+                whichButton = "(No button, impossible?)";
+                break;
+        }
+        msg = MessageForClick(whichButton, labelText);
+        MessageBox.Show(msg);
+    }
+
+    private string MessageForClick(string whichButton, string labelText)
+    {
+        string str = string.Format("Label: {0} click on {1}", whichButton, labelText);
+        return str;
+    }
 
 } // class
