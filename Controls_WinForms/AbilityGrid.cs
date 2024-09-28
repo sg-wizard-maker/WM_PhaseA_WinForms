@@ -79,7 +79,6 @@ public class AbilityGrid : DataGridView
         return result;
     }
 
-
    public void OnCellMouseDown(object sender, DataGridViewCellMouseEventArgs cmea)
     {
         var    parent      = this.Parent as AbilityLabelAndGridPanel;
@@ -98,8 +97,8 @@ public class AbilityGrid : DataGridView
 
         switch (cmea.Button)
         {
-            // cmea.RowIndex is -1 for a click on the Header, otherwise 0..n
-            // cmea.ColumnIndex is 1..N
+            // cmea.RowIndex    is 0..n, or -1 for a click on the ColumnHeader
+            // cmea.ColumnIndex is 0..N  (would perhaps be -1 for the RowHeader, if we had one?)
 
             case MouseButtons.Left:
                 whichButton = "Left";
