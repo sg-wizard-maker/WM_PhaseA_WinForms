@@ -128,6 +128,8 @@ public class AbilitiesTabPage : TabPage
 
         this.Controls.Add(this.TheSplitContainer);
 
+        //this.TheSplitContainer.Panel2.Click += OnTabPageClick;  // Note: Never gets called, I think because child contents cover entire control
+
         // TODO:
         // Why is resizing the Form MUCH slower when
         //     (main Form constains CharacterTabControl,
@@ -155,6 +157,19 @@ public class AbilitiesTabPage : TabPage
         this.TheFlowLayoutPanel.DoColumnsSetup(dataGridsInThisPanel);
         this.TheFlowLayoutPanel.AdjustEachContainedGridToIndividualNeededHeight(dataGridsInThisPanel);
     }
+    #endregion
+
+    #region Event Handlers
+    //public void OnTabPageClick(object sender, EventArgs e)
+    //{
+    //    var senderControl = sender as AbilitiesTabPage;
+    //    if (senderControl == null) { return; }
+    //    var mea = e as MouseEventArgs;
+    //    if (mea == null) { return; }
+    //
+    //    string str = string.Format("AbilitiesTabPage: Got {0} click at XY=({1},{2})", mea.Button, mea.X, mea.Y);
+    //    MessageBox.Show(str);
+    //}
     #endregion
 
 } // class

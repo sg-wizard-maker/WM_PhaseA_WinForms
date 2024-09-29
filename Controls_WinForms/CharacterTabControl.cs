@@ -53,6 +53,7 @@ public class CharacterTabControl : TabControl
         this.Controls.Add(TheControlsTestbedPage);
         this.Controls.Add(TheYetAnotherPage);
 
+        this.MouseClick += OnTabClick;
 
         //this.ResumeLayout( false );
         //this.PerformLayout();
@@ -101,6 +102,35 @@ public class CharacterTabControl : TabControl
                 graphics.DrawString(currentTab.Text, tabControl.Font, textBrush, tabRect, sf);
             }
         }
+    }
+
+    public void OnTabClick(object sender, EventArgs e)
+    {
+        var senderControl = sender as CharacterTabControl;
+        if (senderControl == null) { return; }
+        var mea = e as MouseEventArgs;
+        if (mea == null) { return; }
+
+        string caption = "CharacterTabControl.OnTabClick()";
+        if (this != senderControl) { MessageBox.Show("Strange: this != sender", caption); }  // Can this happen?  Perhaps if event raised from some call in another control?
+
+        // Left click results in tab change, thus index change, so after a left click,
+        // this.SelectedIndex corresponds to the tab clicked upon.
+        // (But also, middle click or right click would NOT have that result.)
+        // 
+        // May want to cause middle/right click to change tab,
+        // as we want to have a right-click menu for
+        // the AbilitiesTabPage as a whole (for such as Add Abliity when zero are present)
+
+        // Given an index which corresponds to the selected tab,
+        // we would want to use this to invoke the correct menu / action...
+        // Usual style may be to call a named method upon that object, such as InvokeMenuForTab() or somesuch.
+
+        string msg = string.Format(
+            "{0} click at XY=({1},{2}), index={3}", 
+            mea.Button, mea.X, mea.Y, this.SelectedIndex
+        );
+        MessageBox.Show(msg, caption);
     }
     #endregion
 

@@ -76,6 +76,22 @@ public class AbilitiesFlowLayoutPanel : FlowLayoutPanel
         // they are added in at a later time, either by a DoDataSetupFor*() method,
         // or some similar method (not yet implemented) which does
         // such setup based upon the abilities data in a particular Character.
+
+        this.MouseClick += OnFlowLayoutPanelClick;
+    }
+    #endregion
+
+    #region Event Handlers
+    public void OnFlowLayoutPanelClick(object sender, EventArgs e)
+    {
+        var senderControl = sender as AbilitiesFlowLayoutPanel;
+        if (senderControl == null) { return; }
+        var mea = e as MouseEventArgs;
+        if (mea == null) { return; }
+
+        string caption = "AbilitiesFlowLayoutPanel.OnFlowLayoutPanelClick()";
+        string str     = string.Format("{0} click at XY=({1},{2})", mea.Button, mea.X, mea.Y);
+        MessageBox.Show(str, caption);
     }
     #endregion
 

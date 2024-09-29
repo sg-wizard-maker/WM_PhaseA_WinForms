@@ -73,8 +73,9 @@ public class AbilityLabelAndGridPanel : TableLayoutPanel
                 whichButton = "(No button, impossible?)";
                 break;
         }
+        string caption = "AbilityLabelAndGridPanel.OnLabelClick()";
         msg = MessageForClick(whichButton, labelText);
-        MessageBox.Show(msg);
+        MessageBox.Show(msg, caption);
     }
 
     private string MessageForClick(string whichButton, string labelText)

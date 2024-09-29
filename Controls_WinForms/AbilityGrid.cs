@@ -91,8 +91,8 @@ public class AbilityGrid : DataGridView
             clickedCell = this[cmea.ColumnIndex, cmea.RowIndex];
             nameCell    = this[2, cmea.RowIndex];  // WART: 2 is a magic number, const AbilitiesFlowLayoutPanel.COL_AbilityName
         }
-        string cellText    = clickedCell?.Value as string;
-        string rowName     = nameCell?.Value    as string;
+        string cellText    = clickedCell?.Value.ToString();
+        string rowName     = nameCell?.Value.ToString();
         string whichButton;
 
         switch (cmea.Button)
@@ -116,8 +116,9 @@ public class AbilityGrid : DataGridView
                 whichButton = "(No button, impossible?)";
                 break;
         }
-        string msg = MessageForClick(whichButton, labelText, cmea.RowIndex, cmea.ColumnIndex, rowName, cellText);
-        MessageBox.Show(msg);
+        string caption = "AbilityGrid.OnCellMouseDown()";
+        string msg     = MessageForClick(whichButton, labelText, cmea.RowIndex, cmea.ColumnIndex, rowName, cellText);
+        MessageBox.Show(msg, caption);
     }
 
     private string MessageForClick(string whichButton, string labelText, int rowIndex, int columnIndex, string rowName, string cellText)
