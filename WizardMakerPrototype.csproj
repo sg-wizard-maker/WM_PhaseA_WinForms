@@ -89,7 +89,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls_WinForms\AbilitiesTabPage.cs">
+    <Compile Include="Controls_WinForms\Abilities\AbilitiesTabPage.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls_WinForms\CharacterTabControl.cs">
@@ -108,13 +108,13 @@
     <Compile Include="Models\Saga.cs" />
     <Compile Include="Utliity\ControlExtensions.cs" />
     <Compile Include="Utliity\Utility.cs" />
-    <Compile Include="Controls_WinForms\AbilityLabelAndGridPanel.cs">
+    <Compile Include="Controls_WinForms\Abilities\AbilityLabelAndGridPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls_WinForms\AbilitiesFlowLayoutPanel.cs">
+    <Compile Include="Controls_WinForms\Abilities\AbilitiesFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls_WinForms\AbilityGrid.cs">
+    <Compile Include="Controls_WinForms\Abilities\AbilityGrid.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls_WinForms\CharacteristicsGridControl.cs">
