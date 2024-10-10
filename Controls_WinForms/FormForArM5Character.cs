@@ -14,7 +14,7 @@ public class FormForArM5Character : Form
     #region Public members
     public Character TheCharacter { get; private set; }
 
-    public AbilitiesFlowLayoutPanel PanelForAbilityGroupings { get; private set; }
+    //public AbilitiesFlowLayoutPanel PanelForAbilityGroupings { get; private set; }
     public CharacterTabControl      TheTabControl            { get; private set; }
     #endregion
 
@@ -36,6 +36,7 @@ public class FormForArM5Character : Form
         this.TheTabControl = new CharacterTabControl();
         this.TheTabControl.Dock = DockStyle.Fill;
 
+        this.Shown += OnFormShown;
 
         #region GUI Layout: SuspendLayout()/add controls/ResumeLayout()/PerformLayout()
         this.SuspendLayout();
@@ -64,6 +65,21 @@ public class FormForArM5Character : Form
         var debugAbilityArchetypes         = AbilityArchetype.AllCommonAbilities;
         var debugAbilityArchetypeWildcards = AbilityArchetypeWildcard.AllAbilityArchetypeWildcards;
         #endregion
+    }
+    #endregion
+
+    #region Event Handlers
+    public void OnFormShown(object sender, EventArgs e)
+    {
+        // HACK: The behavior of SplitContainer is odd;
+        // attempts to programatically set the SplitterDistance 
+        // prior to form.Shown seem to be largely ignored.
+        // 
+        // This may be due to various contained control dimensions not being set up yet?
+
+        // As a result, possibly some other control dimension adjustments will end up here.  Blah.
+
+        this.TheTabControl.TheAbilitiesPage.TheSplitContainer.SplitterDistance = 125;
     }
     #endregion
 

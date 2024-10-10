@@ -13,19 +13,51 @@ namespace WizardMakerPrototype.Controls;
 
 // TODO: Likely will replace this with a treatment more similar to AbilityGrid / AbilityLabelAndGridPanel
 
+// TODO:
+// Not wholly happy with this control; the maximum effort solution might involve
+// implementing control(s) capable of doing layout of all four combinations of (HH, HV, VH, VV) where
+//     HH = (Horizontal arrangement, of two Horizontal groups each displaying 4 Characteristics)
+//     HV = (Horizontal arrangement, of two Vertical   groups each displaying 4 Characteristics)
+//     VH = (Vertical   arrangement, of two Horizontal groups each displaying 4 Characteristics)
+//     VV = (Horizontal arrangement, of two Vertical   groups each displaying 4 Characteristics)
+// 
+// HH = ---- ----
+// 
+// HV = _  _
+//      _  _
+//      _  _
+//      _  _
+// 
+// VH = ----
+//      ----
+// 
+// VV = _
+//      _
+//      _
+//      _
+// 
+//      _
+//      _
+//      _
+//      _
+// 
+// Each of these has their uses.  For example, VV would be desirable for some all-text environments, such as "past text to Discord"
+// 
+
+
 /// <summary>
 /// 
 /// </summary>
 public class CharacteristicsGridControl : DataGridView
 {
     const int GRID_CHARACTERISTICS_WIDTH_EXTRA_BOLD = 8;
-    const int GRID_CHARACTERISTICS_WIDTH_NO_BOLD = 333;
-    const int GRID_CHARACTERISTICS_WIDTH_BOLD    = GRID_CHARACTERISTICS_WIDTH_NO_BOLD + (2 * GRID_CHARACTERISTICS_WIDTH_EXTRA_BOLD);
-    const int GRID_CHARACTERISTICS_WIDTH = GRID_CHARACTERISTICS_WIDTH_BOLD;
+    const int GRID_CHARACTERISTICS_WIDTH_NO_BOLD    = 333;
+    const int GRID_CHARACTERISTICS_WIDTH_BOLD       = GRID_CHARACTERISTICS_WIDTH_NO_BOLD + (2 * GRID_CHARACTERISTICS_WIDTH_EXTRA_BOLD);
+    const int GRID_CHARACTERISTICS_WIDTH            = GRID_CHARACTERISTICS_WIDTH_BOLD;
 
     const int GRID_CHARACTERISTICS_HEIGHT_NO_HEADERS   = 91;
     const int GRID_CHARACTERISTICS_HEIGHT_WITH_HEADERS = (GRID_CHARACTERISTICS_HEIGHT_NO_HEADERS + 22);
-    const int GRID_CHARACTERISTICS_HEIGHT = GRID_CHARACTERISTICS_HEIGHT_WITH_HEADERS;
+    const int GRID_CHARACTERISTICS_HEIGHT              = GRID_CHARACTERISTICS_HEIGHT_WITH_HEADERS;
 
     //public Character TheCharacter
     //{

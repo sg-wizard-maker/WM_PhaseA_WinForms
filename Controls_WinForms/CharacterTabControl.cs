@@ -131,6 +131,8 @@ public class CharacterTabControl : TabControl
             mea.Button, mea.X, mea.Y, this.SelectedIndex
         );
         MessageBox.Show(msg, caption);
+
+        this.TheAbilitiesPage.TheSplitContainer.SplitterDistance = 125;
     }
     #endregion
 

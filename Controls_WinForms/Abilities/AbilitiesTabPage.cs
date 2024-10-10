@@ -27,6 +27,8 @@ public class AbilitiesTabPage : TabPage
 
     public SplitContainer           TheSplitContainer   { get; private set; }
 
+    public CharacteristicsGridControl TheCharacteristicsGrid { get; private set; }
+
     public Label LabelAbilityType          { get; private set; }
     public Label LabelAbilityCategory      { get; private set; }
     public Label LabelAbilityWildcardGroup { get; private set; }
@@ -103,6 +105,8 @@ public class AbilitiesTabPage : TabPage
             DisplayMember = "Name",
         };
 
+        this.TheCharacteristicsGrid = new CharacteristicsGridControl(5, 5, true, true);
+
         this.TheFlowLayoutPanel = new AbilitiesFlowLayoutPanel() 
         {
             AutoSize     = true, 
@@ -112,21 +116,28 @@ public class AbilitiesTabPage : TabPage
 
 
 
-        this.TheSplitContainer.Panel1.Controls.Add(this.LabelAbilityType);
-        this.TheSplitContainer.Panel1.Controls.Add(this.LabelAbilityCategory);
-        this.TheSplitContainer.Panel1.Controls.Add(this.LabelAbility);
-        this.TheSplitContainer.Panel1.Controls.Add(this.LabelAbilityWildcardGroup);
-        this.TheSplitContainer.Panel1.Controls.Add(this.LabelWildcardAbility);
+        //this.TheSplitContainer.Panel1.Controls.Add(this.LabelAbilityType);
+        //this.TheSplitContainer.Panel1.Controls.Add(this.LabelAbilityCategory);
+        //this.TheSplitContainer.Panel1.Controls.Add(this.LabelAbility);
+        //this.TheSplitContainer.Panel1.Controls.Add(this.LabelAbilityWildcardGroup);
+        //this.TheSplitContainer.Panel1.Controls.Add(this.LabelWildcardAbility);
+        //
+        //this.TheSplitContainer.Panel1.Controls.Add(this.Combo1);
+        //this.TheSplitContainer.Panel1.Controls.Add(this.Combo2);
+        //this.TheSplitContainer.Panel1.Controls.Add(this.Combo3);
+        //this.TheSplitContainer.Panel1.Controls.Add(this.Combo4);
+        //this.TheSplitContainer.Panel1.Controls.Add(this.Combo5);
 
-        this.TheSplitContainer.Panel1.Controls.Add(this.Combo1);
-        this.TheSplitContainer.Panel1.Controls.Add(this.Combo2);
-        this.TheSplitContainer.Panel1.Controls.Add(this.Combo3);
-        this.TheSplitContainer.Panel1.Controls.Add(this.Combo4);
-        this.TheSplitContainer.Panel1.Controls.Add(this.Combo5);
+        this.TheSplitContainer.Panel1.BackColor = Color.DarkOrange;  // For debug
+        //this.TheSplitContainer.Panel2.BackColor = Color.Beige;  // Gets covered up, not needed
+
+        this.TheSplitContainer.Panel1.Controls.Add(this.TheCharacteristicsGrid);
 
         this.TheSplitContainer.Panel2.Controls.Add(this.TheFlowLayoutPanel);
 
         this.Controls.Add(this.TheSplitContainer);
+
+        //this.TheSplitContainer.SplitterDistance = 150;  // Seems to need to be called after the ctor...
 
         //this.TheSplitContainer.Panel2.Click += OnTabPageClick;  // Note: Never gets called, I think because child contents cover entire control
 
