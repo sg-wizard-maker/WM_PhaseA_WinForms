@@ -55,6 +55,15 @@ public class FormForArM5Character : Form
             }
         };
 
+        EventHandler onClickAbout = delegate (object sender, EventArgs ea)
+        {
+            const string about = 
+                "Wizard Maker - \n" +
+                "A program for character creation and editing\n" + 
+                "for the role-playing game Ars Magica, 5th Edition.";
+            MessageBox.Show(about, "About Wizard Maker");
+        };
+
         this.TheMainMenu.Items.AddRange( new ToolStripItem[]
             { 
             this.MenuFile,
@@ -78,7 +87,7 @@ public class FormForArM5Character : Form
             new ToolStripMenuItem("Menu Item 1"),
             new ToolStripMenuItem("Menu Item 2"),
             new ToolStripSeparator(),
-            new ToolStripMenuItem("About Wizard Maker"),
+            new ToolStripMenuItem("About Wizard Maker", null, onClickAbout),
         });
 
         this.MainMenuStrip = this.TheMainMenu;
