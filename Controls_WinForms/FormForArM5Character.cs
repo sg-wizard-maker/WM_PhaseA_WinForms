@@ -14,8 +14,11 @@ public class FormForArM5Character : Form
     #region Public members
     public Character TheCharacter { get; private set; }
 
-    //public AbilitiesFlowLayoutPanel PanelForAbilityGroupings { get; private set; }
-    public CharacterTabControl      TheTabControl            { get; private set; }
+    public CharacterTabControl TheTabControl { get; private set; }
+
+    public MenuStrip           TheMainMenu   { get; private set; }
+    public ToolStripMenuItem   MenuFile      { get; private set; }
+    public ToolStripMenuItem   MenuAbout     { get; private set; }
     #endregion
 
     #region Constructors
@@ -33,21 +36,59 @@ public class FormForArM5Character : Form
         this.BackColor           = Color.Green;  // Useful for debugging, probably remove later
         //this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 
-        this.TheTabControl = new CharacterTabControl();
+        this.TheTabControl = new CharacterTabControl() { Location = new Point(0, 20) };
         this.TheTabControl.Dock = DockStyle.Fill;
 
         this.Shown += OnFormShown;
 
+        #region Setup of Main Menu for this Form
+        this.TheMainMenu = new MenuStrip() { Dock = DockStyle.Top };
+        this.MenuFile    = new ToolStripMenuItem("File")  { Name = "File"  };
+        this.MenuAbout   = new ToolStripMenuItem("About") { Name = "About" };
+
+        EventHandler onClickExit = delegate (object sender, EventArgs ea)
+        {
+            var dialogResult = MessageBox.Show("Do you wish to exit without saving?", "Confirm Exit", MessageBoxButtons.OKCancel);
+            if (dialogResult == DialogResult.OK)
+            {
+                Application.Exit();
+            }
+        };
+
+        this.TheMainMenu.Items.AddRange( new ToolStripItem[]
+            { 
+            this.MenuFile,
+            this.MenuAbout,
+            } 
+        );
+        this.MenuFile.DropDownItems.AddRange(new ToolStripItem[] 
+        {
+            new ToolStripMenuItem("New [STUB]"),
+            new ToolStripMenuItem("Open [STUB]"),
+            new ToolStripMenuItem("Save [STUB]"),
+            new ToolStripMenuItem("Save As [STUB]"),
+            new ToolStripSeparator(),
+            new ToolStripMenuItem("Page Setup [STUB]"),
+            new ToolStripMenuItem("Print [STUB]"),
+            new ToolStripSeparator(),
+            new ToolStripMenuItem("Exit", null, onClickExit),
+        });
+        this.MenuAbout.DropDownItems.AddRange(new ToolStripItem[] 
+        {
+            new ToolStripMenuItem("Menu Item 1"),
+            new ToolStripMenuItem("Menu Item 2"),
+            new ToolStripSeparator(),
+            new ToolStripMenuItem("About Wizard Maker"),
+        });
+
+        this.MainMenuStrip = this.TheMainMenu;
+        #endregion
+
         #region GUI Layout: SuspendLayout()/add controls/ResumeLayout()/PerformLayout()
         this.SuspendLayout();
 
-        // TODO:
-        // Why is resizing the Form MUCH slower when using TabControl, rather than PanelForAbilityGroupings (a AbilitiesFlowLayoutPanel used directly) ?
-        // - Found that SuspendLayout()/ResumeLayout() did not affect performance -- may be useful only "when adding several controls"
-        // - Found that setting ControlStyles.OptimizedDoubleBuffer improved performance considerably, for (AbilityGrid, AbilityLabelAndGridPanel, CharacterTabControl)
-        //   but not for (AbilitiesFlowLayoutPanel, AbilitiesTabPage)
         this.Controls.Add(this.TheTabControl);
-        //this.Controls.Add(this.PanelForAbilityGroupings);
+        this.Controls.Add(this.TheMainMenu);  // Needs to be added AFTER the docked TabControl
 
         this.ResumeLayout( false );
         this.PerformLayout();
