@@ -25,7 +25,7 @@ public class AbilitiesTabPage : TabPage
         }
     }
 
-    public SplitContainer           TheSplitContainer   { get; private set; }
+    public SplitContainer             TheSplitContainer      { get; private set; }
 
     public CharacteristicsGridControl TheCharacteristicsGrid { get; private set; }
 
@@ -52,6 +52,16 @@ public class AbilitiesTabPage : TabPage
     {
         this.BackColor = Color.DarkOliveGreen;  // Useful for debug, not needed later on
         //this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);  // No benefit seen when applied only here
+
+        this.ContextMenuStrip = new ContextMenuStrip();  // Hmmm...all regions in the TabPage have the same MenuStrip, this may not be what we want...
+        var menuItem1 = new ToolStripMenuItem("AbilitiesTabPage Item 1");
+        var menuItem2 = new ToolStripMenuItem("AbilitiesTabPage Item 2");
+        this.ContextMenuStrip.Items.AddRange(new ToolStripItem[] 
+        {
+            menuItem1,
+            menuItem2,
+        });
+
 
         this.TheSplitContainer = new SplitContainer()
         { 

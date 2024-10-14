@@ -49,6 +49,15 @@ public class CharacterTabControl : TabControl
         //#region GUI Layout: SuspendLayout()/add controls/ResumeLayout()/PerformLayout()  -- Perhaps performance benefit if used here, once sufficient TabPages are contained...
         //this.SuspendLayout();
 
+        this.ContextMenuStrip = new ContextMenuStrip();  // Hmmm...each tab has the same MenuStrip, may not be what we want...
+        var menuItem1 = new ToolStripMenuItem("CharacterTabControl Item 1");
+        var menuItem2 = new ToolStripMenuItem("CharacterTabControl Item 2");
+        this.ContextMenuStrip.Items.AddRange(new ToolStripItem[] 
+        {
+            menuItem1,
+            menuItem2,
+        });
+
         this.Controls.Add(TheAbilitiesPage);
         this.Controls.Add(TheControlsTestbedPage);
         this.Controls.Add(TheYetAnotherPage);

@@ -31,6 +31,15 @@ public class AbilityLabelAndGridPanel : TableLayoutPanel
         //this.BackColor = Color.CadetBlue;  // Helpful for debugging, not needed otherwise
         this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);  // Some benefit seen here...
 
+        this.ContextMenuStrip = new ContextMenuStrip();  // 
+        var menuItem1 = new ToolStripMenuItem("AbilityLabelAndGridPanel Item 1");
+        var menuItem2 = new ToolStripMenuItem("AbilityLabelAndGridPanel Item 2");
+        this.ContextMenuStrip.Items.AddRange(new ToolStripItem[] 
+        {
+            menuItem1,
+            menuItem2,
+        });
+
         this.TheLabel = new Label()
         {
             BackColor = Color.LightSteelBlue,  //Control.DefaultBackColor,

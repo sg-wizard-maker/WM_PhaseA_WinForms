@@ -74,6 +74,15 @@ public class CharacteristicsGridControl : DataGridView
     #region Constructors
     public CharacteristicsGridControl ( int locationX, int locationY, bool hasIntelligence = true, bool showColumnHeaders = true )
     {
+        this.ContextMenuStrip = new ContextMenuStrip();  // Hmmm...this being present, acts to override the AbilitiesTabPage context menu, within this Control.  Useful.
+        var menuItem1 = new ToolStripMenuItem("CharacteristicsGridControl Item 1");
+        var menuItem2 = new ToolStripMenuItem("CharacteristicsGridControl Item 2");
+        this.ContextMenuStrip.Items.AddRange(new ToolStripItem[] 
+        {
+            menuItem1,
+            menuItem2,
+        });
+
         string abilityNameIntOrCunning   = hasIntelligence ? "Intelligence" : "Cunning";
         string abilityAbbrevIntOrCunning = hasIntelligence ? "INT"          : "CUN";
 

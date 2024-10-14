@@ -56,6 +56,15 @@ public class AbilitiesFlowLayoutPanel : FlowLayoutPanel
 
         this.BackColor = Color.Yellow;  // Useful for debug, not needed otherwise
 
+        this.ContextMenuStrip = new ContextMenuStrip();  // Hmmm...this being present, acts to override the AbilitiesTabPage context menu, within this Control.  Useful.
+        var menuItem1 = new ToolStripMenuItem("AbilitiesFlowLayoutPanel Item 1");
+        var menuItem2 = new ToolStripMenuItem("AbilitiesFlowLayoutPanel Item 2");
+        this.ContextMenuStrip.Items.AddRange(new ToolStripItem[] 
+        {
+            menuItem1,
+            menuItem2,
+        });
+
         // Note:
         // With FlowDirection.TopDown, starting with an empty Controls collection,
         // the first control is placed upon the top-left,
